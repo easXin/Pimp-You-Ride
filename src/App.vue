@@ -1,12 +1,14 @@
+
 <template>
+<v-app>
   <div id="app">
   <Header/>
   <router-view/>
   </div>
+</v-app>
 </template>
 
 <script>
-
 import Header from "./components/layouts/Header"
 export default {
   name: 'app',
@@ -26,4 +28,3 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>

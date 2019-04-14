@@ -7,10 +7,13 @@
             <b-row>
                 <b-col><IDEMenu @changeFonts="changeFonts"/></b-col>
                  <b-col >
-                    <h3> Welcome to your ide </h3>
+                     
+                    <h3 v-if="title"> {{title}}</h3>
+                    <h3 v-else> Welcome to your IDE</h3>
                     <div id="ide" contenteditable="true">
-                        Start typing
+                        
                     </div>
+                    <SubmitCode v-bind:unlockable="unlockable"/>
                      </b-col>
             </b-row>
         </b-container>
@@ -19,15 +22,19 @@
 </template>
 <script>
 import IDEMenu from '../components/IDEMenu.vue'
+import SubmitCode from '../components/dialogs/submitCode.vue'
 import {FONT_SETTINGS} from '../settings.js'
 export default {
     name: "IDE",
     components: {
-        IDEMenu
+        IDEMenu, SubmitCode
     },
+    props: ["title"],
     data(){
         return{
-            fontStylings: FONT_SETTINGS
+            fontStylings: FONT_SETTINGS,
+            unlockable: "Star Wars Theme"
+            
         }
     },
     methods: {
@@ -35,6 +42,15 @@ export default {
             let ide = document.getElementById("ide")
             ide.style.fontFamily = this.fontStylings[font]
             console.log(this.fontStylings["dokdo"])
+        },
+        submit(){
+            let randomNumber = Math.random();
+            if(randomNumber<0.5){
+                console.log("correct");
+            }
+            else{
+                console.log("wrong");
+            }
         }
     }
 }

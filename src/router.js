@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Levels from './components/Levels.vue'
 import IDE from './views/IDE.vue'
+import Login from './views/Login.vue'
 import LevelDescription from './components/LevelDescription.vue'
 
 Vue.use(Router)
@@ -11,17 +12,23 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Levels
+            component: Levels,
         },
         {
             path: '/ide',
             name: 'ide',
-            component: IDE
+            component: IDE,
+            props: true
         },
         {
             path: '/description',
             name: 'levelDescription',
             component: LevelDescription
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
         }
     ]
 })

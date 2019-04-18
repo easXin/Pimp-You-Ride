@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="entireIDEPage">
        
         
         <b-container>
@@ -62,6 +62,17 @@ export default {
     min-height: 70vh;
     text-align: left;
     padding: 5px;
+    background: white;
+    
+
+}
+
+#entireIDEPage {
+    background-image: url('../assets/clouds.jpg') ;
+}
+
+h3{
+    color: black;
 }
 </style>
 

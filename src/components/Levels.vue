@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1> Levels</h1>
+    <h1> ID  {{id}}</h1>
      <v-list>
         <v-list-tile
           v-for="(level, index) in levels"
@@ -29,6 +29,7 @@ export default {
     components: {
         Level, StartLevel
     },
+    props: ["id"],
     data (){
     return {
       levels: [
@@ -50,7 +51,8 @@ export default {
 
       ],
       startLevelVisible: false,
-      title: ""
+      title: "",
+
     }
   },
   methods: {

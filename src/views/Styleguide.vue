@@ -70,6 +70,29 @@
                         <h3 style="margin-bottom: 20px;"> Secondary Headers should be displayed using the h3 header </h3>
                         <h5 style="margin-bottom: 20px;"> Tertiary Headers should be displayed using the h5 header </h5>
                     </v-flex>
+                     <v-flex xs12 ma-5>
+                        <h3 style="margin-bottom: 40px;"> IDE Theme Styles</h3> 
+                        <v-layout row wrap>
+                            <v-flex xs12>
+                            <h5> Light Theme </h5>
+                            <p> Light theme should be used when backgrounds in the IDE are lighter in nature. In this case the font on the page should be the color black </p>
+                          
+                            </v-flex>
+
+                        </v-layout>
+
+                         <v-layout row wrap>
+                             <v-flex xs12 >
+                                 <v-card color='black' id="darkTheme">
+                             <h5 style="color: white;"> Dark Theme </h5>
+                             <p> Light theme should be used when backgrounds in the IDE are lighter in nature. In this case the font on the page should be the color black </p>
+                                 <v-btn color="yellow"> Click me </v-btn> <span> In dark mode, traditional blue mode buttons shousld be in yellow</span>
+                                 </v-card>
+                             </v-flex>
+
+                        </v-layout>
+                       
+                    </v-flex>
                         
                     </v-layout>
                 </v-container>
@@ -91,5 +114,8 @@
 <style scoped>
     #secondary {
         font-family: 'Noto Serif', serif;
+    }
+    #darkTheme {
+        color: white;
     }
 </style>

@@ -9,3 +9,13 @@ export const FONT_SETTINGS = {
     [ROBOTO]: "'Roboto Condensed', sans-serif",
     [PATUA_ONE]: "'Patua One', cursive"
 }
+
+
+export const BACGKROUND_OPTIONS =[ {
+  name: "SPACE", path: SPACE_PATH, light: false
+},
+{
+    name: "CLOUDS", path: '../ass', light: true
+}
+]
+let SPACE_PATH = '../assets/space.jpg';

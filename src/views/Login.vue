@@ -32,13 +32,13 @@
           // this is the body of the POST request
           body: JSON.stringify({
             action: "addOrEditUsers",
-            username: "james"
+            username: this.name
           })
         }).then((response) => {
           return response.json()
   
         }).then((data) => {
-          console.log(data)
+          this.$router.push({name: 'home', params: {id: data["Record Id"]}})
         })
       }
   

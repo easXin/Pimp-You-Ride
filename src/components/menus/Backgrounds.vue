@@ -7,6 +7,7 @@
         :key ="temp"
         >
         <img :src = "temp.path" width="200" height="50">
+        {{temp.title}}
         <v-icon :id="temp+'icon'" class='d-none' color="green">checkmark</v-icon>
 
         </v-list-tile>

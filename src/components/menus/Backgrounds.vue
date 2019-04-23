@@ -3,12 +3,13 @@
     <h1> Backgrounds </h1>
     <v-list>
         <v-list-tile
-        v-for = "temp in backgrounds"
-        :key ="temp"
+        v-for="(background, index) in backgrounds"
+        :key ="index"
+        @click="changeBackground(background.title)"
         >
-        <img :src = "temp.path" width="200" height="50">
-        {{temp.title}}
-        <v-icon :id="temp+'icon'" class='d-none' color="green">checkmark</v-icon>
+        <img :src ="background.path" width="50" height="50">
+        {{background.title}}
+        <v-icon :id="background+'icon'" class='d-none ml3' color="green">checkmark</v-icon>
 
         </v-list-tile>
     </v-list>
@@ -17,12 +18,17 @@
 </template>
 <script>
 
-import {Backgrounds} from '../../settings.js'
+import {BACKGROUNDS} from '../../settings.js'
 export default {
     name: "Backgrounds",
     data(){
         return{
-            backgrounds: Backgrounds
+            backgrounds:BACKGROUNDS
+        }
+    },
+    methods: {
+        changeBackground(selectedBackground){
+            this.$emit("changeBackground", selectedBackground);
         }
     }
     

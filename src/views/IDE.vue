@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div id="page">
        
         
         <b-container>
              
             <b-row>
-                <b-col><IDEMenu @changeFonts="changeFonts"/></b-col>
+                <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
                  <b-col >
                      
                     <h3 v-if="title"> {{title}}</h3>
@@ -24,6 +24,7 @@
 import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'
 import {FONT_SETTINGS} from '../settings.js'
+import {BACKGROUNDS} from '../settings.js'
 export default {
     name: "IDE",
     components: {
@@ -33,6 +34,7 @@ export default {
     data(){
         return{
             fontStylings: FONT_SETTINGS,
+            backgrounds: BACKGROUNDS,
             unlockable: "Star Wars Theme"
             
         }
@@ -42,6 +44,13 @@ export default {
             let ide = document.getElementById("ide")
             ide.style.fontFamily = this.fontStylings[font]
             console.log(this.fontStylings["dokdo"])
+        },
+        changeBackground(background){
+            let page = document.getElementById("page")
+            page.style.background = "url("+this.backgrounds[background].path + ")";
+            let ide = document.getElementById("ide")
+            ide.style.background =  "white"
+
         },
         submit(){
             let randomNumber = Math.random();

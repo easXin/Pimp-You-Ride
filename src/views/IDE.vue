@@ -49,6 +49,10 @@ export default {
             page.style.background = "url("+this.backgrounds[background].path + ")";
             let ide = document.getElementById("ide")
             ide.style.background =  "white"
+            if(this.backgrounds[background].dark){
+                page.style.color = "white";
+                ide.style.color = "black";
+            }
 
         },
         submit(){

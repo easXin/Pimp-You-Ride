@@ -5,7 +5,6 @@
   <br>
   <div>
     <span id="tab"> Course Content</span>
-     <v-list >
      <v-list>
         <v-list-tile
           class="title"

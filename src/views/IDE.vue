@@ -1,19 +1,28 @@
 <template>
-<<<<<<< HEAD
-    <div id="entireIDEPage">
-=======
     <div id="page">
->>>>>>> backgrounds
-       
-        
+
         <b-container>
              
             <b-row>
                 <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
                  <b-col >
                      
-                    <h3 v-if="title"> {{title}}</h3>
-                    <h3 v-else> Welcome to your IDE</h3>
+                    <h3 v-if="title"> {{title}}</h3>                 
+                    <h3 v-else> Welcome to your IDE.....</h3>
+                    <div class="tab">
+                        <button class="tabInfo" >Home</button>
+                        <button class="tabInfo" >Hint</button>
+                        <button class="tabInfo" >...</button>
+                        <button class="tabInfo" >...</button>
+                        <button class="tabInfo" >...</button>
+                        <button class="tabInfo" >...</button>
+                    </div>
+                    <br>
+                    <!-- add attribute to the tab if there is needed -->
+                        <div id="addAttributeToTab1" class="tabcontent"></div>
+                        <div id="addAttributeToTab2" class="tabcontent"></div>
+                    <!-- add attribute to the tab if there is needed -->
+
                     <div id="ide" contenteditable="true">
                         
                     </div>
@@ -24,6 +33,40 @@
     
     </div>
 </template>
+
+<style scoped>
+/* styling the tabs */
+.tab {
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.tab button:hover {
+  background-color: #dddddd;
+}
+
+.tab button:active {
+  background-color: #cccccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+}
+
+</style>
+
 <script>
 import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'

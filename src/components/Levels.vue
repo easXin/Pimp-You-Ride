@@ -6,6 +6,7 @@
   <div>
     <span id="tab"> Course Content</span>
      <v-list >
+     <v-list>
         <v-list-tile
           class="title"
           v-for="(level, index) in levels"
@@ -125,7 +126,8 @@ export default {
         }
       ],
       startLevelVisible: false,
-      title: ""
+      title: "",
+
     }
   },
   

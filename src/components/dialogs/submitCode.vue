@@ -65,11 +65,10 @@
             this.title = "Error",
             this.success = false,
             this.text = "Your code was incorrect. Please try again.",
-<<<<<<< HEAD
             this.locked = false
-=======
+
             this.locked = true
->>>>>>> ac0687c3ca36f530196cdc38631cee200c264800
+
           }
         }
   

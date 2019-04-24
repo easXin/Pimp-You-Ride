@@ -1,6 +1,6 @@
 <template>
     <div class="level">
-       <span class="title">{{level.title}}</span> <span class="unlockable">{{level.unlockable}}</span>
+       <span class="title">{{level.title }}</span> <span class="unlockable">{{level.unlockable}}</span>
     </div>
 </template>
 <script>
@@ -9,16 +9,18 @@ export default {
     props: ["level"]
 }
 </script>
+
 <style scoped>
 .level{
-    border: 1px solid black;
+    border: 1px solid  aqua;
     padding: 10px;
 }
 .title{
     font-size: 20px;
+    color: pink;
 }
 .unlockable{
-    float: right;
+    float: left;
 }
 </style>
 

@@ -43,7 +43,7 @@
 <script>
   export default {
     name: "SubmitCode",
-    props: ["unlockable"],
+    props: ["unlockable","locked"],
     data() {
       return {
         dialog: false,
@@ -57,13 +57,15 @@
         if (this.dialog) {
           let randomNumber = Math.random();
           if (randomNumber > .5) {
-            this.title = "Good Job!"
-            this.text = "You unlocked "+this.unlockable +"!!"
-            this.success = true
+            this.title = "Good Job!",
+            this.text = "You unlocked "+this.unlockable +"!!",
+            this.success = true,
+            this.locked = false
           } else {
-            this.title = "Error"
-            this.success = false
-            this.text = "Your code was incorrect. Please try again."
+            this.title = "Error",
+            this.success = false,
+            this.text = "Your code was incorrect. Please try again.",
+            this.locked = false
           }
         }
   

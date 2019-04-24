@@ -1,7 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="500">
-  
-  
+<v-dialog v-model="dialog" width="500">
     <v-card>
       <v-card-title class="headline grey lighten-2" primary-title>
         {{title}}
@@ -20,7 +18,7 @@
           Stay here
         </v-btn>
         <v-btn color="primary" flat @click="goToLevel(title)">
-          Go to Level
+          Go to Level 
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -54,6 +52,7 @@
     methods: {
       goToLevel: function(title) {
         this.$router.push({name: 'ide', params: {title: title}})
+        alert("Make sure you complete")
       }
     }
   

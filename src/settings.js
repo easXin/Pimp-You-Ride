@@ -14,17 +14,6 @@ export const FONT_SETTINGS = {
     [PATUA_ONE]: "'Patua One', cursive"
 }
 
-<<<<<<< HEAD
-
-export const BACGKROUND_OPTIONS =[ {
-  name: "SPACE", path: SPACE_PATH, light: false
-},
-{
-    name: "CLOUDS", path: '../ass', light: true
-}
-]
-let SPACE_PATH = '../assets/space.jpg';
-=======
 export const BACKGROUNDS = {
     [SPACE]: {
     title: 'Space',
@@ -42,4 +31,3 @@ export const BACKGROUNDS = {
     path: 'http://i65.tinypic.com/2m5jyc6.jpg'
 }
 }
->>>>>>> backgrounds

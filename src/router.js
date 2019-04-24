@@ -32,6 +32,7 @@ export default new Router({
             name: 'login',
             component: Login
         },
+        
         {
             path: '/styleguide',
             name: 'styleguide',

@@ -38,6 +38,8 @@
           return response.json()
   
         }).then((data) => {
+          localStorage.setItem("userId", data["Record Id"])
+          this.$bus.$emit('loggedIn');
           this.$router.push({name: 'home', params: {id: data["Record Id"]}})
         })
       }

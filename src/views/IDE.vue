@@ -34,8 +34,7 @@ export default {
     data(){
         return{
             fontStylings: FONT_SETTINGS,
-            backgrounds: BACKGROUNDS,
-            unlockable: "Star Wars Theme"
+            unlockable: "dokdo"
             
         }
     },

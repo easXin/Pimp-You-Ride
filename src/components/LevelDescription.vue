@@ -1,10 +1,12 @@
+
+
 <template>
 <div>
 <div class="mydiv">
-    <h1>Description</h1>
+    <h1>Description...</h1>
 </div>
 <div class="div2">
-<h2> Some text</h2>
+<h2> Some text </h2>
 </div>
 </div> 
 </template>

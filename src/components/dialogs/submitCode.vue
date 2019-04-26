@@ -44,12 +44,17 @@
   export default {
     name: "SubmitCode",
     props: ["unlockable","locked"],
-    data() {
+    data: () => {
       return {
         dialog: false,
         title: '',
         text: '',
-        success: false
+        success: false,
+      }
+    },
+    computed: {
+      userId(){
+        return localStorage.getItem("userId");
       }
     },
     watch: {
@@ -60,27 +65,35 @@
             this.title = "Good Job!"
             this.text = "You unlocked " + this.unlockable + "!!"
             this.success = true
-  
-            fetch("http://stark.cse.buffalo.edu/cse410/usercontroller.php", {
+            console.log(this.badge_name)
+            fetch("http://stark.cse.buffalo.edu/cse410/badgecontroller.php", {
               // we are making a POST request
               method: 'POST',
               // this is the body of the POST request
               body: JSON.stringify({
                 action: "getBadges",
-                badge_name: this.username
+                badgename: this.unlockable
               })
             }).then((response) => {
               return response.json()
   
             }).then((data) => {
-              localStorage.setItem("userId", data["Record Id"])
-              this.$bus.$emit('loggedIn');
-              this.$router.push({
-                name: 'home',
-                params: {
-                  id: data["Record Id"]
-                }
+              console.log(data)
+              fetch("http://stark.cse.buffalo.edu/cse410/ubcontroller.php", {
+              // we are making a POST request
+              method: 'POST',
+              // this is the body of the POST request
+              body: JSON.stringify({
+                action:  "addOrEditUserBadges",
+                badgeid : data["badges"][0].badge_id,
+                userid : this.userId
               })
+            }).then((response) => {
+              return response.json()
+  
+            }).then((data) => {
+              console.log(data);
+            });
             })
   
           } else {

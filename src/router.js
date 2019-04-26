@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Levels from './components/Levels.vue'
 import IDE from './views/IDE.vue'
 import Login from './views/Login.vue'
+
+import Signup from './views/Signup.vue'
+
 import StyleGuide from './views/Styleguide.vue'
 import LevelDescription from './components/LevelDescription.vue'
 
@@ -31,6 +34,11 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: Login
+        },
+        {
+            path: '/signup',
+            name: 'signup',
+            component: Signup
         },
         
         {

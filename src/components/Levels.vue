@@ -10,7 +10,7 @@
           class="title"
           v-for="(level, index) in levels"
           :key="index"
-          @click="startLevel(level.title)"
+          @click="startLevel(level.title,level.description)"
         > 
  
           <v-list-tile-title style="height=10px; width = 10px;">
@@ -30,7 +30,8 @@
          
          <StartLevel v-on:setVisibilityFalse="stopLevel"  
           v-bind:visible="startLevelVisible"
-          v-bind:title="title" />   
+          v-bind:title="title"
+          v-bind:description="description" />   
       </v-list>
   </div>
 </div>
@@ -50,90 +51,104 @@ export default {
     props:['locked'],
     data (){
     return {
-      levels: [
+       levels: [
        {
           number: 1,
           title: "Course Introduction",
+          description:"🐱meow1",
           unlockable: "blue",
           locked : submitCode.locked,
         },
         {
           number: 2,
           title: "Variables, Datatypes and Operators",
+          description:"🐱meow2",
           unlockable: "green",
           locked : submitCode.locked,
         },
         {
           number: 3,
           title: "Expressions, Statements, Code blocks, Methods",
+          description:"🐱meow3",
           unlockable: "red",
           locked : submitCode.locked,
         },
         {
           number: 4,
           title: "Control Flow Statements",
+          description:"🐱meow4",
           unlockable: "red",
           locked : submitCode.locked,
         },
         {
            number: 5,
            title: "Classes, Constructors and Inheritance",
+           description:"🐱meow5",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 6,
            title: "Composition, Encapsulation, and Polymorphism",
+           description:"🐱meow6",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 7,
            title: "Arrays, Lists, Autoboxing and Unboxing",
+           description:"🐱meow7",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 8,
            title: "Inner and Abstract Classes & Interfaces",
+           description:"🐱meow8",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 9,
            title: "Java Generics",
+           description:"🐱meow9",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 10,
            title: "Static and Final Keyword",
+           description:"🐱meow10",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 11,
            title: "Java Collection",
+           description:"🐱meow11",
            unlockable: "red",
            locked : submitCode.locked,
         },
         {
            number: 12,
            title: "Basic Input & Output",
+           description:"🐱meow12",
            unlockable: "red",
            locked : submitCode.locked,
         }
       ],
       startLevelVisible: false,
       title: "",
+      description: "",
 
     }
   },
   
   methods: {
-    startLevel: function(title){
+    startLevel: function(title,description){
       this.startLevelVisible = true;
       this.title = title
+      this.description=description;
     },
     stopLevel: function(){
       this.startLevelVisible = false;
@@ -151,10 +166,8 @@ export default {
 .title{
   background: #F2F3F5;
   text-align: center;
-  /* top right buttom left */
-  margin: 2% 9%;
+  margin: 2% 25%;
   padding: 15px 15px 0 15px;
-  /* size: 88.5px 570px; */
   height:88.5px;
   width:570px;
 }

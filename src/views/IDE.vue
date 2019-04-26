@@ -6,20 +6,29 @@
              
             <b-row>
                 <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
-                 <b-col >
-                     
-                    <h3 v-if="title"> {{title}}</h3>
+                 <b-col >         
+                    <h3 v-if="title"> {{title}} </h3>
                     <h3 v-else> Welcome to your IDE</h3>
-                    <div id="ide" contenteditable="true">
-                        
-                    </div>
-                    <SubmitCode v-bind:unlockable="unlockable"/>
+                    
+                    <div>
+                    <b-tabs content-class="mt-3">
+                        <b-tab title="IDE" active>
+                            <div>
+                             <div id="ide" contenteditable="true"></div>
+                            </div>
+                            <SubmitCode v-bind:unlockable="unlockable"/> 
+                        </b-tab>
+                        <b-tab title="Level Description">  {{description}}</b-tab>
+                        <b-tab title="..." disabled><p>reserved room for furture tabs</p></b-tab>
+                    </b-tabs>
+                    </div>        
                      </b-col>
             </b-row>
         </b-container>
     
     </div>
 </template>
+
 <script>
 import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'
@@ -30,7 +39,7 @@ export default {
     components: {
         IDEMenu, SubmitCode
     },
-    props: ["title"],
+    props: ["title","description"],
     data(){
         return{
             fontStylings: FONT_SETTINGS,
@@ -39,6 +48,7 @@ export default {
         }
     },
     methods: {
+       
         changeFonts(font){
             let ide = document.getElementById("ide")
             ide.style.fontFamily = this.fontStylings[font]
@@ -76,7 +86,6 @@ export default {
     padding: 5px;
     background: white;
     
-
 }
 
 #entireIDEPage {

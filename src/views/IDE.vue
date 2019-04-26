@@ -57,6 +57,18 @@ export default {
         changeBackground(background){
             let page = document.getElementById("page")
             page.style.background = "url("+this.backgrounds[background].path + ")";
+            console.log(this.backgrounds[background].dark);
+            if(this.backgrounds[background].dark){
+                let title = document.getElementById("title")
+                title.style.color = "white";
+                let menuTitle = document.getElementById("menuTitle")
+                menuTitle.style.color = "black"
+                console.log("Change to white")
+            }
+            else{
+                page.color = "black"
+                console.log("has to execute");
+            }
             let ide = document.getElementById("ide")
             ide.style.background =  "white"
             if(this.backgrounds[background].dark){
@@ -77,7 +89,7 @@ export default {
     }
 }
 </script>
-<style >
+<style>
 @import url('https://fonts.googleapis.com/css?family=Dokdo|Patua+One|Roboto+Condensed');
 #ide{
     border: 1px solid blue;

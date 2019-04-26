@@ -4,10 +4,6 @@
       <v-text-field v-model="name" label="User Name" required></v-text-field>
   
       <v-text-field label="Password" required></v-text-field>
-  
-  
-  
-  
       <v-btn color="success" @click="submit">
         Log In
       </v-btn>

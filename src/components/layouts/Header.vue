@@ -7,7 +7,10 @@
         <b-nav-item ><router-link to="/ide">IDE</router-link></b-nav-item>
         <b-nav-item ><router-link to="/description">description</router-link></b-nav-item>
         <b-nav-item v-if="loggedIn" @click="logout">Log Out</b-nav-item>
-        <b-nav-item v-else><router-link to="/login">Log In</router-link></b-nav-item>
+        <template v-else>
+        <b-nav-item ><router-link to="/login">Log In</router-link></b-nav-item>
+        <b-nav-item ><router-link to="/signup">Sign Up</router-link></b-nav-item>
+        </template>
         <b-nav-item ><router-link to="/styleguide">Styleguide</router-link></b-nav-item>
         </b-navbar-nav>
      </b-navbar>

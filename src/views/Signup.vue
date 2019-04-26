@@ -31,17 +31,15 @@
           method: 'POST',
           // this is the body of the POST request
           body: JSON.stringify({
-            action: "getUsers",
+            action: "addOrEditUsers",
             username: this.name
           })
         }).then((response) => {
           return response.json()
   
         }).then((data) => {
-          console.log(data)
-          localStorage.setItem("userId", data["users"][0].user_id)
-          this.$bus.$emit('loggedIn');
-          this.$router.push({name: 'home', params: {id: data["Record Id"]}})
+          console.log(data);
+          this.$router.push({name: 'login'})
         })
       }
   

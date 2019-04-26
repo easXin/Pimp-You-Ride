@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Levels from './components/Levels.vue'
 import IDE from './views/IDE.vue'
 import Login from './views/Login.vue'
+import StyleGuide from './views/Styleguide.vue'
 import LevelDescription from './components/LevelDescription.vue'
 
 Vue.use(Router)
@@ -13,6 +14,7 @@ export default new Router({
             path: '/',
             name: 'home',
             component: Levels,
+            props: true
         },
         {
             path: '/ide',
@@ -29,6 +31,12 @@ export default new Router({
             path: '/login',
             name: 'login',
             component: Login
+        },
+        
+        {
+            path: '/styleguide',
+            name: 'styleguide',
+            component: StyleGuide
         }
     ]
 })

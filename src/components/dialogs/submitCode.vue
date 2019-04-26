@@ -1,13 +1,13 @@
 <template>
   <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on }">
-          <v-btn
-            color="success"
-            dark
-            v-on="on"
-          >
-            Submit
-          </v-btn>
+            <v-btn
+              color="success"
+              dark
+              v-on="on"
+            >
+              Submit
+            </v-btn>
 </template>
 
       <v-card>
@@ -43,7 +43,7 @@
 <script>
   export default {
     name: "SubmitCode",
-    props: ["unlockable"],
+    props: ["unlockable","locked"],
     data() {
       return {
         dialog: false,
@@ -58,12 +58,39 @@
           let randomNumber = Math.random();
           if (randomNumber > .5) {
             this.title = "Good Job!"
-            this.text = "You unlocked "+this.unlockable +"!!"
+            this.text = "You unlocked " + this.unlockable + "!!"
             this.success = true
+  
+            fetch("http://stark.cse.buffalo.edu/cse410/usercontroller.php", {
+              // we are making a POST request
+              method: 'POST',
+              // this is the body of the POST request
+              body: JSON.stringify({
+                action: "getBadges",
+                badge_name: this.username
+              })
+            }).then((response) => {
+              return response.json()
+  
+            }).then((data) => {
+              localStorage.setItem("userId", data["Record Id"])
+              this.$bus.$emit('loggedIn');
+              this.$router.push({
+                name: 'home',
+                params: {
+                  id: data["Record Id"]
+                }
+              })
+            })
+  
           } else {
-            this.title = "Error"
-            this.success = false
-            this.text = "Your code was incorrect. Please try again."
+            this.title = "Error",
+            this.success = false,
+            this.text = "Your code was incorrect. Please try again.",
+            this.locked = false
+
+            this.locked = true
+
           }
         }
   

@@ -6,20 +6,29 @@
              
             <b-row>
                 <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
-                 <b-col >
-                     
-                    <h3 id="title" v-if="title"> {{title}}</h3>
-                    <h3 id="title" v-else> Welcome to your IDE</h3>
-                    <div id="ide" contenteditable="true">
-                        
-                    </div>
-                    <SubmitCode v-bind:unlockable="unlockable"/>
+                 <b-col >         
+                    <h3 v-if="title"> {{title}} </h3>
+                    <h3 v-else> Welcome to your IDE</h3>
+                    
+                    <div>
+                    <b-tabs content-class="mt-3">
+                        <b-tab title="IDE" active>
+                            <div>
+                             <div id="ide" contenteditable="true"></div>
+                            </div>
+                            <SubmitCode v-bind:unlockable="unlockable"/> 
+                        </b-tab>
+                        <b-tab title="Level Description">  {{description}}</b-tab>
+                        <b-tab title="..." disabled><p>reserved room for furture tabs</p></b-tab>
+                    </b-tabs>
+                    </div>        
                      </b-col>
             </b-row>
         </b-container>
     
     </div>
 </template>
+
 <script>
 import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'
@@ -30,16 +39,16 @@ export default {
     components: {
         IDEMenu, SubmitCode
     },
-    props: ["title"],
+    props: ["title","description"],
     data(){
         return{
             fontStylings: FONT_SETTINGS,
-            backgrounds: BACKGROUNDS,
-            unlockable: "Star Wars Theme"
+            unlockable: "dokdo"
             
         }
     },
     methods: {
+       
         changeFonts(font){
             let ide = document.getElementById("ide")
             ide.style.fontFamily = this.fontStylings[font]
@@ -62,6 +71,10 @@ export default {
             }
             let ide = document.getElementById("ide")
             ide.style.background =  "white"
+            if(this.backgrounds[background].dark){
+                page.style.color = "white";
+                ide.style.color = "black";
+            }
 
         },
         submit(){
@@ -83,6 +96,16 @@ export default {
     min-height: 70vh;
     text-align: left;
     padding: 5px;
+    background: white;
+    
+}
+
+#entireIDEPage {
+    background-image: url('../assets/clouds.jpg') ;
+}
+
+h3{
+    color: black;
 }
 </style>
 

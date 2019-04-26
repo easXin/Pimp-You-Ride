@@ -1,6 +1,6 @@
 <template>
     <div class="level">
-       <span class="title">{{level.title }}</span> <span class="unlockable">{{level.unlockable}}</span>
+       <span class="title">{{level.title}}</span> <span class="unlockable">{{level.unlockable}}</span>
     </div>
 </template>
 <script>
@@ -23,5 +23,3 @@ export default {
     float: left;
 }
 </style>
-
-

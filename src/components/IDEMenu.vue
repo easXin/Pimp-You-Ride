@@ -17,7 +17,7 @@
           :key="index"
           @click="setComponent(item)"
         >
-          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          <v-list-tile-title id = "menuTitle">{{ item.title }}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -83,5 +83,6 @@
 <style scoped>
   .ideMenu {
     border: solid red 1px;
+    background:white;
   }
 </style>

@@ -8,8 +8,8 @@
                 <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
                  <b-col >
                      
-                    <h3 v-if="title"> {{title}}</h3>
-                    <h3 v-else> Welcome to your IDE</h3>
+                    <h3 id="title" v-if="title"> {{title}}</h3>
+                    <h3 id="title" v-else> Welcome to your IDE</h3>
                     <div id="ide" contenteditable="true">
                         
                     </div>
@@ -48,6 +48,18 @@ export default {
         changeBackground(background){
             let page = document.getElementById("page")
             page.style.background = "url("+this.backgrounds[background].path + ")";
+            console.log(this.backgrounds[background].dark);
+            if(this.backgrounds[background].dark){
+                let title = document.getElementById("title")
+                title.style.color = "white";
+                let menuTitle = document.getElementById("menuTitle")
+                menuTitle.style.color = "black"
+                console.log("Change to white")
+            }
+            else{
+                page.color = "black"
+                console.log("has to execute");
+            }
             let ide = document.getElementById("ide")
             ide.style.background =  "white"
 
@@ -64,7 +76,7 @@ export default {
     }
 }
 </script>
-<style >
+<style>
 @import url('https://fonts.googleapis.com/css?family=Dokdo|Patua+One|Roboto+Condensed');
 #ide{
     border: 1px solid blue;

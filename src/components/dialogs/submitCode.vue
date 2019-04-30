@@ -65,8 +65,7 @@
             this.title = "Good Job!"
             this.text = "You unlocked " + this.unlockable + "!!"
             this.success = true
-            console.log(this.badge_name)
-            fetch("http://stark.cse.buffalo.edu/cse410/badgecontroller.php", {
+            fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/badgecontroller.php", {
               // we are making a POST request
               method: 'POST',
               // this is the body of the POST request
@@ -79,7 +78,7 @@
   
             }).then((data) => {
               console.log(data)
-              fetch("http://stark.cse.buffalo.edu/cse410/ubcontroller.php", {
+              fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php", {
               // we are making a POST request
               method: 'POST',
               // this is the body of the POST request
@@ -95,6 +94,7 @@
               console.log(data);
             });
             })
+            this.$emit("update")
   
           } else {
             this.title = "Error",

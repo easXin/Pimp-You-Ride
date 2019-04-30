@@ -16,7 +16,7 @@
         <v-btn color="primary" flat @click="dialog= false">
           Stay here
         </v-btn>
-        <v-btn color="primary" flat @click="goToLevel(title,description)">
+        <v-btn color="primary" flat @click="goToLevel(title,description, unlockable)">
           Go to Level 
         </v-btn>
       </v-card-actions>
@@ -29,7 +29,7 @@
 <script>
   export default {
     name: "StartLevel",
-    props: ["levelTitle", "visible", "title","description"],
+    props: ["levelTitle", "visible", "title","description", "unlockable"],
     data() {
       return {
         dialog: false
@@ -49,8 +49,8 @@
       }
     },
     methods: {
-      goToLevel: function(title,description) {
-        this.$router.push({name: 'ide', params: {title: title , description:description}})        
+      goToLevel: function(title,description, unlockable) {
+        this.$router.push({name: 'ide', params: {title: title , description:description, unlockable: unlockable}})        
       }
     }
   

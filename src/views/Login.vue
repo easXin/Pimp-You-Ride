@@ -26,7 +26,7 @@
     },
     methods: {
       submit() {
-        fetch("http://stark.cse.buffalo.edu/cse410/usercontroller.php", {
+        fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/usercontroller.php", {
           // we are making a POST request
           method: 'POST',
           // this is the body of the POST request

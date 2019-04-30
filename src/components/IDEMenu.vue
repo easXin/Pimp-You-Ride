@@ -22,7 +22,7 @@
       </v-list>
     </v-menu>
   </div>
-    <Backgrounds v-show="items.background.show" @changeBackground="changeBackground" />
+    <Backgrounds ref="background" v-show="items.background.show" @changeBackground="changeBackground" />
     <FontsMenu  v-show="items.fonts.show" @changeFonts="changeFonts" />
     </div>
 
@@ -74,6 +74,9 @@
       },
       changeBackground(background){
         this.$emit("changeBackground", background);
+      },
+      update(){
+        this.refs.background.getBackgrounds();
       }
     }
   

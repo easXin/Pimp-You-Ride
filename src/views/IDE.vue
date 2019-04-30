@@ -5,10 +5,10 @@
         <b-container>
              
             <b-row>
-                <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
+                <b-col><IDEMenu ref='ideMenu' @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
                  <b-col >         
-                    <h3 v-if="title"> {{title}} </h3>
-                    <h3 v-else> Welcome to your IDE</h3>
+                    <h3 id="title" v-if="title"> {{title}} </h3>
+                    <h3 id="title" v-else> Welcome to your IDE</h3>
                     
                     <div>
                     <b-tabs content-class="mt-3">
@@ -16,7 +16,7 @@
                             <div>
                              <div id="ide" contenteditable="true"></div>
                             </div>
-                            <SubmitCode v-bind:unlockable="unlockable"/> 
+                            <SubmitCode @update="update" v-bind:unlockable="unlockable"/> 
                         </b-tab>
                         <b-tab title="Level Description">  {{description}}</b-tab>
                         <b-tab title="..." disabled><p>reserved room for furture tabs</p></b-tab>
@@ -39,16 +39,18 @@ export default {
     components: {
         IDEMenu, SubmitCode
     },
-    props: ["title","description"],
+    props: ["title","description", "unlockable"],
     data(){
         return{
             fontStylings: FONT_SETTINGS,
-            unlockable: "dokdo"
-            
+            backgrounds: BACKGROUNDS,
+
         }
     },
     methods: {
-       
+        update(){
+            this.$refs.ideMenu.update();
+        },
         changeFonts(font){
             let ide = document.getElementById("ide")
             ide.style.fontFamily = this.fontStylings[font]
@@ -56,9 +58,8 @@ export default {
         },
         changeBackground(background){
             let page = document.getElementById("page")
-            page.style.background = "url("+this.backgrounds[background].path + ")";
-            console.log(this.backgrounds[background].dark);
-            if(this.backgrounds[background].dark){
+            page.style.background = "url("+background.path + ")";
+            if(background.dark){
                 let title = document.getElementById("title")
                 title.style.color = "white";
                 let menuTitle = document.getElementById("menuTitle")
@@ -69,13 +70,7 @@ export default {
                 page.color = "black"
                 console.log("has to execute");
             }
-            let ide = document.getElementById("ide")
-            ide.style.background =  "white"
-            if(this.backgrounds[background].dark){
-                page.style.color = "white";
-                ide.style.color = "black";
-            }
-
+           
         },
         submit(){
             let randomNumber = Math.random();

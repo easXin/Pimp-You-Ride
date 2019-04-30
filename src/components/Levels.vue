@@ -6,32 +6,40 @@
   <div>
     <span id="tab"> Course Content</span>
      <v-list>
+
+
+
+       
         <v-list-tile
           class="title"
           v-for="(level, index) in levels"
           :key="index"
-          @click="startLevel(level.title,level.description)"
         > 
- 
+          <div v-bind:id="'level'+index">
           <v-list-tile-title style="height=10px; width = 10px;">
               <div id = "layoutContentList" style="font-size: 12px;">
-                <div v-if="locked">
-                <span style="color:red;">
-                  IMCOMPLETED</span>  | Section: {{index+1}}  {{ level.title }} 
+                <div v-if="level.unlocked">
+                <span style="color:green;">
+                  COMPLETE</span>  | Section: {{index+1}}  {{ level.title }} 
                   </div>
                 <div v-else>
-                 <span style="color:green;">
-                  COMPLETED</span>  | Section: {{index+1}}  {{ level.title }} 
+                 <span style="color:red;">
+                  INCOMPLETE</span>  | Section: {{index+1}}  {{ level.title }} 
                 </div>
               </div>
                
           </v-list-tile-title>
+             
+             
+             
+          </div>
         </v-list-tile>
          
          <StartLevel v-on:setVisibilityFalse="stopLevel"  
           v-bind:visible="startLevelVisible"
           v-bind:title="title"
-          v-bind:description="description" />   
+          v-bind:description="description" 
+          v-bind:unlockable="unlockable"/>   
       </v-list>
   </div>
 </div>
@@ -42,7 +50,7 @@
 import Level from './Level'
 import StartLevel from './dialogs/startLevel.vue'
 import submitCode from './dialogs/submitCode.vue'
-
+import {CLOUDS} from '../settings.js'
 export default {
     name: "Levels",
     components: {
@@ -56,102 +64,108 @@ export default {
           number: 1,
           title: "Course Introduction",
           description:"🐱meow1",
-          unlockable: "blue",
-          locked : submitCode.locked,
+          unlockable: "Clouds",
+          unlocked: true
         },
-        {
+         {
           number: 2,
-          title: "Variables, Datatypes and Operators",
-          description:"🐱meow2",
-          unlockable: "green",
-          locked : submitCode.locked,
+          title: "If Statements",
+          description:"🐱meow1",
+          unlockable: "space",
+          unlocked: false
         },
         {
           number: 3,
-          title: "Expressions, Statements, Code blocks, Methods",
-          description:"🐱meow3",
-          unlockable: "red",
-          locked : submitCode.locked,
-        },
-        {
-          number: 4,
-          title: "Control Flow Statements",
-          description:"🐱meow4",
-          unlockable: "red",
-          locked : submitCode.locked,
-        },
-        {
-           number: 5,
-           title: "Classes, Constructors and Inheritance",
-           description:"🐱meow5",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 6,
-           title: "Composition, Encapsulation, and Polymorphism",
-           description:"🐱meow6",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 7,
-           title: "Arrays, Lists, Autoboxing and Unboxing",
-           description:"🐱meow7",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 8,
-           title: "Inner and Abstract Classes & Interfaces",
-           description:"🐱meow8",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 9,
-           title: "Java Generics",
-           description:"🐱meow9",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 10,
-           title: "Static and Final Keyword",
-           description:"🐱meow10",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 11,
-           title: "Java Collection",
-           description:"🐱meow11",
-           unlockable: "red",
-           locked : submitCode.locked,
-        },
-        {
-           number: 12,
-           title: "Basic Input & Output",
-           description:"🐱meow12",
-           unlockable: "red",
-           locked : submitCode.locked,
+          title: "Assigning Variables",
+          description:"🐱meow1",
+          unlockable: "deathstar",
+          unlocked: false
+
         }
       ],
       startLevelVisible: false,
       title: "",
       description: "",
+      unlockable: ""
 
     }
   },
-  
+  computed: {
+      userId(){
+        return localStorage.getItem("userId");
+      }
+    },
+  mounted(){
+    let firstTile = document.getElementById("level0");
+    firstTile.onclick = () => {
+                      this.startLevel(this.levels[0].title, this.levels[0].description, this.levels[0].unlockable)};
+    firstTile.style.cursor = "pointer";
+    this.levels.forEach((level, index)=>{
+     
+       if(this.levels.length-1!==index){
+         this.checkIfLocked(level.unlockable, index+1);
+      }
+     
+    })
+  },
   methods: {
-    startLevel: function(title,description){
+    startLevel: function(title,description, unlockable){
       this.startLevelVisible = true;
       this.title = title
       this.description=description;
+      this.unlockable=unlockable;
     },
     stopLevel: function(){
       this.startLevelVisible = false;
+    },
+    
+    checkIfLocked: function(unlockable, index){
+
+         
+            fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/badgecontroller.php", {
+              // we are making a POST request
+              method: 'POST',
+              // this is the body of the POST request
+              body: JSON.stringify({
+                action: "getBadges",
+                badgename: unlockable
+              })
+            }).then((response) => {
+              return response.json()
+  
+            }).then((data)=>{
+              console.log(data);
+             fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php", {
+               method: 'POST',
+               body: JSON.stringify({
+                action:  "getUserBadges",
+                badgeid : data["badges"][0].badge_id,
+                userid : this.userId
+              })
+
+             }).then((response)=>{
+               return response.json();
+
+             }).then((data)=>{
+               if(data.user_badges || index==0){      
+                  let levelTile = document.getElementById("level"+index);
+                
+         
+                  levelTile.onclick = () => {
+                      this.startLevel(this.levels[index].title, this.levels[index].description, this.levels[index].unlockable)};
+                  levelTile.style.cursor = "pointer";
+                 this.levels[index].unlocked = true;
+               }
+               else{
+        
+                 this.levels[index].unlocked = false;
+               }
+              
+             });
+            });
+ 
+      
+
     }
   }
 }

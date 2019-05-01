@@ -42,7 +42,6 @@ export default {
             let selectedCheckedItem = document.getElementById(selectedBackground.title + 'icon');
             console.log(this.allBackgrounds);
             for(var background of this.backgrounds){
-                console.log(background.title);
                 let backgroundCheck = document.getElementById(background.title+'icon');
                 if(backgroundCheck===selectedCheckedItem){
                     backgroundCheck.className+=" d-inline"
@@ -89,7 +88,6 @@ export default {
                     systemBadges.forEach((badge)=>{
                         if(userBadges.includes(badge.badge_id)){
                             if(this.allBackgrounds[badge.badge_name]){
-                                  console.log("Ok something is pushed");
                                   backgrounds.push(this.allBackgrounds[badge.badge_name]);
                             }
                           
@@ -110,5 +108,8 @@ export default {
 </script>
 
 <style scoped>
+[id$=icon] {
+    
+}
 
 </style>

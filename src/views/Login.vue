@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1> Log In </h1>
     <v-form ref="form" lazy-validation>
       <v-text-field v-model="name" label="User Name" required></v-text-field>
   

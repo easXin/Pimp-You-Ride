@@ -40,7 +40,6 @@ export default {
             this.$emit("changeBackground", selectedBackground);
         },
         getBackgrounds: function(){
-            console.log("ok we made it now what");
 
             let backgrounds = []
             fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{
@@ -65,20 +64,16 @@ export default {
                     return response.json();
                 })
                 .then((badgeData)=>{
-                    let userBadges =[]
-                    // console.log(userBadgeData);
-                    // console.log(userBadgeData.user_badges);
+                    let userBadges =[];
                     let array = userBadgeData.user_badges;
-                    //console.log("Array "+ (typeof array));
                     array.forEach((badge)=>{
                         userBadges.push(badge.badge_id);
                     })
-                    console.log(userBadges);
                     let systemBadges = badgeData.badges;
                     systemBadges.forEach((badge)=>{
                         if(userBadges.includes(badge.badge_id)){
                             if(this.allBackgrounds[badge.badge_name]){
-                                  console.log(this.allBackgrounds[badge.badge_name]);
+                                  console.log("Ok something is pushed");
                                   backgrounds.push(this.allBackgrounds[badge.badge_name]);
                             }
                           

@@ -1,12 +1,22 @@
 <template>
   <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on }">
+
             <v-btn
+              v-if="unlockable"
               color="success"
               dark
               v-on="on"
             >
               Submit
+            </v-btn>
+            <v-btn
+              v-else
+              color="success"
+              dark
+              v-on="on"
+            >
+              Run
             </v-btn>
 </template>
 
@@ -30,9 +40,16 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog = false"
+            @click="backToLevels()"
           >
-            I accept
+            Back to Levels
+          </v-btn>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog= false;"
+          >
+            Return to IDE
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -57,12 +74,18 @@
         return localStorage.getItem("userId");
       }
     },
+    methods: {
+      backToLevels(){
+        this.$router.push({name: "home", params: {id: localStorage.getItem("userId")}})
+      }
+    },
     watch: {
       dialog: function() {
         if (this.dialog) {
           let randomNumber = Math.random();
           if (randomNumber > .5) {
             this.title = "Good Job!"
+            if(this.unlockable){
             this.text = "You unlocked " + this.unlockable + "!!"
             this.success = true
             fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/badgecontroller.php", {
@@ -92,9 +115,14 @@
   
             }).then((data) => {
               console.log(data);
+              this.$emit("update")
             });
             })
-            this.$emit("update")
+            }
+            else{
+              this.success = true
+              this.text = "Congratulations, your code compiles correctly!";
+            }
   
           } else {
             this.title = "Error",

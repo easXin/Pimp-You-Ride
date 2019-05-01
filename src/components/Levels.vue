@@ -134,7 +134,6 @@ export default {
               return response.json()
   
             }).then((data)=>{
-              console.log(data);
              fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php", {
                method: 'POST',
                body: JSON.stringify({

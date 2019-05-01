@@ -67,8 +67,8 @@
                     <v-flex xs12 ma-5>
                         <h3 style="margin-bottom: 40px;"> Headers</h3> 
                         <h1 style="margin-bottom: 20px;"> Main Headers should be displayed using the h1 header</h1>
-                        <h3 style="margin-bottom: 20px;"> Secondary Headers should be displayed using the h3 header </h3>
-                        <h5 style="margin-bottom: 20px;"> Tertiary Headers should be displayed using the h5 header </h5>
+                        <h2 style="margin-bottom: 20px;"> Secondary Headers should be displayed using the h2 header </h2>
+                        <h3 style="margin-bottom: 20px;"> Tertiary Headers should be displayed using the h3 header </h3>
                     </v-flex>
                      <v-flex xs12 ma-5>
                         <h3 style="margin-bottom: 40px;"> IDE Theme Styles</h3> 

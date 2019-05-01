@@ -6,7 +6,7 @@
              
             <b-row>
                 <b-col><IDEMenu ref='ideMenu' @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
-                 <b-col >         
+                 <b-col id="levelDescription">         
                     <h3 id="title" v-if="title"> {{title}} </h3>
                     <h3 id="title" v-else> Welcome to your IDE</h3>
                     
@@ -18,8 +18,7 @@
                             </div>
                             <SubmitCode @update="update" v-bind:unlockable="unlockable"/> 
                         </b-tab>
-                        <b-tab title="Level Description">  {{description}}</b-tab>
-                        <b-tab title="..." disabled><p>reserved room for furture tabs</p></b-tab>
+                        <b-tab title="Level Description" >  {{description}}</b-tab>
                     </b-tabs>
                     </div>        
                      </b-col>
@@ -34,10 +33,14 @@ import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'
 import {FONT_SETTINGS} from '../settings.js'
 import {BACKGROUNDS} from '../settings.js'
+let $ = require('jquery')
 export default {
     name: "IDE",
     components: {
         IDEMenu, SubmitCode
+    },
+    mounted(){
+        this.setLevelDescriptionHeight();
     },
     props: ["title","description", "unlockable"],
     data(){
@@ -48,6 +51,10 @@ export default {
         }
     },
     methods: {
+        setLevelDescriptionHeight(){
+            console.log(document.height);
+            document.getElementById("page").style.height = $("document").height();
+        },
         update(){
             this.$refs.ideMenu.update();
         },
@@ -59,16 +66,15 @@ export default {
         changeBackground(background){
             let page = document.getElementById("page")
             page.style.background = "url("+background.path + ")";
+            page.style.backgroundSize = "1000px 800px";
             if(background.dark){
                 let title = document.getElementById("title")
                 title.style.color = "white";
                 let menuTitle = document.getElementById("menuTitle")
                 menuTitle.style.color = "black"
-                console.log("Change to white")
             }
             else{
-                page.color = "black"
-                console.log("has to execute");
+                title.style.color = "black"
             }
            
         },
@@ -98,6 +104,7 @@ export default {
 #entireIDEPage {
     background-image: url('../assets/clouds.jpg') ;
 }
+
 
 h3{
     color: black;

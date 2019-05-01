@@ -18,7 +18,7 @@
                             </div>
                             <SubmitCode @update="update" v-bind:unlockable="unlockable"/> 
                         </b-tab>
-                        <b-tab title="Level Description" >  {{description}}</b-tab>
+                        <b-tab title="Level Description" @click="adjustBackground()" >  {{description}}</b-tab>
                     </b-tabs>
                     </div>        
                      </b-col>
@@ -51,9 +51,8 @@ export default {
         }
     },
     methods: {
-        setLevelDescriptionHeight(){
-            console.log(document.height);
-            document.getElementById("page").style.height = $("document").height();
+        adjustBackground(){
+            $('#page').css("height", $('body').height());
         },
         update(){
             this.$refs.ideMenu.update();
@@ -66,7 +65,7 @@ export default {
         changeBackground(background){
             let page = document.getElementById("page")
             page.style.background = "url("+background.path + ")";
-            page.style.backgroundSize = "1000px 800px";
+            $('#page').css("background","url("+background.path + ") !important" );
             if(background.dark){
                 let title = document.getElementById("title")
                 title.style.color = "white";

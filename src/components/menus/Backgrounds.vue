@@ -9,7 +9,7 @@
         >
         <img :src ="background.path" width="50" height="50">
         {{background.title}}
-        <v-icon :id="background+'icon'" class='d-none ml3' color="green">checkmark</v-icon>
+        <v-icon :id="background.title+'icon'" class='d-none check' color="green">checkmark</v-icon>
 
         </v-list-tile>
     </v-list>
@@ -38,6 +38,21 @@ export default {
     methods: {
         changeBackground: function(selectedBackground){
             this.$emit("changeBackground", selectedBackground);
+            let selectedCheckedItem = document.getElementById(selectedBackground.title + 'icon');
+            console.log(this.allBackgrounds);
+            for(var background of this.backgrounds){
+                console.log(background.title);
+                let backgroundCheck = document.getElementById(background.title+'icon');
+                if(backgroundCheck===selectedCheckedItem){
+                    backgroundCheck.className+=" d-inline"
+                    backgroundCheck.classList.remove('d-none');
+                }
+                else{
+                    backgroundCheck.className+= ' d-none'
+                    backgroundCheck.classList.remove('d-inline');
+                }
+            }
+            this.$emit("changeBackground",selectedBackground)
         },
         getBackgrounds: function(){
 

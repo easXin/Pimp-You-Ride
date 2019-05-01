@@ -18,6 +18,7 @@
 </template>
 <script>
 
+
 import {BACKGROUNDS} from '../../settings.js'
 export default {
     name: "Backgrounds",

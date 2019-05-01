@@ -1,6 +1,6 @@
 <template>
 <div>
-     <b-navbar toggleable="lg" type="dark" variant="info">
+     <b-navbar toggleable="lg" type="dark" variant="info" id='navbar'>
           <b-navbar-brand >Pimp your IDE</b-navbar-brand>
           <b-navbar-nav>
         <b-nav-item ><router-link to="/">Home</router-link></b-nav-item>
@@ -40,7 +40,7 @@ export default {
          logout: function(){
               localStorage.removeItem("userId")
               this.loggedIn = false;
-              this.$router.push({name: 'home'})
+              this.$router.push({name: 'login'})
          },
          checkloggedIn : function(){
               if(localStorage.getItem("userId")){
@@ -54,4 +54,14 @@ export default {
     }
 }
 </script>
+<style>
+#navbar{
+     background-color: #1976d2 !important;
+   
+}
+
+#navbar * {
+     color: white;
+}
+</style>
 

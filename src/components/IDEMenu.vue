@@ -52,7 +52,7 @@
           },
           background: {
             title: "Backgrounds",
-            show: false
+            show: true
           },
           fonts: {
             title: "fonts",
@@ -76,7 +76,7 @@
         this.$emit("changeBackground", background);
       },
       update(){
-        this.refs.background.getBackgrounds();
+        this.$refs.background.getBackgrounds();
       }
     }
   
@@ -85,7 +85,7 @@
 
 <style scoped>
   .ideMenu {
-    border: solid red 1px;
+
     background:white;
   }
 </style>

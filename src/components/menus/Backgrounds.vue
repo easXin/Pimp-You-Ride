@@ -40,6 +40,7 @@ export default {
             this.$emit("changeBackground", selectedBackground);
         },
         getBackgrounds: function(){
+            console.log("ok we made it now what");
 
             let backgrounds = []
             fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{

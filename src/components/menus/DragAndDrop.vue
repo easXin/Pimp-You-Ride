@@ -13,7 +13,8 @@
 </div>
 </template>
 <script>
-import DRAG_COMPONENTS from '../../settings.js';
+import {DRAG_COMPONENTS} from '../../settings.js';
+console.log(DRAG_COMPONENTS);
 export default {
     name: "DragAndDrop",
     data(){

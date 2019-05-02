@@ -104,11 +104,11 @@ export const BACKGROUNDS = {
 }
 }
 
-let WHILE = "while";
-let IF = "if";
-let FOR = "for";
+const WHILE = "while";
+const IF = "if";
+const FOR = "for";
 
-let DRAG_COMPONENTS = {
+export const DRAG_COMPONENTS = {
     [WHILE] :{
         code: "while(true){\n //insert while body here \n}",
         title: "while loop"

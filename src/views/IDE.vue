@@ -13,7 +13,7 @@
             <b-tabs color="purple" content-class="mt-3">
               <b-tab style="color: white;" title="IDE" active>
                 <div>
-                  <editor draggable="true" id="editor" ref="myEditor"  @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
+                  <editor @ondragstart="dragstart_handler(event)" draggable="true" id="editor" ref="myEditor"  @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
                 </div>
                 <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/>
               </b-tab>
@@ -57,6 +57,9 @@ export default {
     },
     update() {
       this.$refs.ideMenu.update();
+    },
+    dragstart_handler(event){
+
     },
     editorInit: function() {
       require("brace/ext/language_tools"); //language extension prerequsite...

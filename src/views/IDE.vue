@@ -13,7 +13,19 @@
             <b-tabs color="purple" content-class="mt-3">
               <b-tab style="color: white;" title="IDE" active>
                 <div>
-                  <editor @ondragstart="dragstart_handler(event)" draggable="true" id="editor" ref="myEditor"  @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
+                  <Drop class="drop" @drop="drop">
+                  <editor
+                    @drop="drop(event)"
+                    id="editor"
+                    ref="myEditor"
+                    @init="editorInit"
+                    v-model="content"
+                    lang="java"
+                    theme="chrome"
+                    width="500"
+                    height="400"
+                  ></editor>
+                  </Drop>
                 </div>
                 <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/>
               </b-tab>
@@ -31,11 +43,13 @@ import IDEMenu from "../components/IDEMenu.vue";
 import SubmitCode from "../components/dialogs/submitCode.vue";
 import { FONT_SETTINGS } from "../settings.js";
 import { BACKGROUNDS } from "../settings.js";
+import {Drop} from 'vue-drag-drop';
 let $ = require("jquery");
 export default {
   name: "IDE",
   components: {
     IDEMenu,
+    Drop,
     SubmitCode,
     editor: require("vue2-ace-editor")
   },
@@ -46,10 +60,11 @@ export default {
       backgrounds: BACKGROUNDS
     };
   },
-  mounted(){
-    document.getElementById('editor').style.fontSize='16px';
+  mounted() {
+    document.getElementById("editor").style.fontSize = "16px";
     let editor = this.$refs.myEditor.editor;
     editor.setValue("if(x==3)");
+    editor.setTheme("ace/theme/twilight");
   },
   methods: {
     adjustBackground() {
@@ -58,8 +73,15 @@ export default {
     update() {
       this.$refs.ideMenu.update();
     },
-    dragstart_handler(event){
+    allowDrop(ev) {
+      ev.preventDefault();
+    },
 
+    drop(data, ev) {
+      let editor = this.$refs.myEditor.editor;
+      editor.insert(data);
+      
+      
     },
     editorInit: function() {
       require("brace/ext/language_tools"); //language extension prerequsite...
@@ -68,12 +90,16 @@ export default {
       require("brace/mode/java");
       require("brace/mode/less");
       require("brace/theme/chrome");
+      require('brace/theme/twilight');
+      require('brace/theme/dreamweaver');
+      
       require("brace/snippets/javascript"); //snippet
     },
     changeFonts(font) {
       let ide = document.getElementById("editor");
       ide.style.fontFamily = this.fontStylings[font];
       console.log(this.fontStylings["dokdo"]);
+      
     },
     changeBackground(background) {
       let page = document.getElementById("page");
@@ -88,7 +114,7 @@ export default {
         $(".title").css("color", "black");
         this.$refs.submitCode.toggleDarkMode(false);
       }
-    },
+    }
   }
 };
 </script>

@@ -103,3 +103,22 @@ export const BACKGROUNDS = {
     path:'https://images4.alphacoders.com/743/74366.jpg'
 }
 }
+
+const WHILE = "while";
+const IF = "if";
+const FOR = "for";
+
+export const DRAG_COMPONENTS = {
+    [WHILE] :{
+        code: "while(true){\n //insert while body here \n}",
+        title: "while loop"
+    } ,
+    [IF] : {
+        code: "if(true){\n //insert if body here \n}",
+        title: "if statement"
+    },
+    [FOR]: {
+        code: "for(int i=0; i< 10; i++){\n  //insert for body here\n }",
+        title: "for loop"
+    }
+}

@@ -30,7 +30,7 @@
             <v-card width="100" height="100" color="primary"></v-card>
           </v-flex>
           <v-flex xs9>
-            <h5>PRIMARY BLUE</h5>Vuetify's default primary blue should be used for all buttons which have a neutral purpose, the header, and as the primary color for the site
+            <h5>PRIMARY BLUE: #1976d2</h5>Vuetify's default primary blue should be used for all buttons which have a neutral purpose, the header, and as the primary color for the site
           </v-flex>
         </v-layout>
       </v-container>
@@ -41,7 +41,18 @@
             <v-card width="100" height="100" color="success"></v-card>
           </v-flex>
           <v-flex xs9>
-            <h5>SUCCESS GREEN</h5>The success flavor of the color green should be used for any submit, login, or other buttons that signal an affirmative action
+            <h5>SUCCESS GREEN: #4caf50</h5>The success flavor of the color green should be used for any submit, login, or other buttons that signal an affirmative action
+          </v-flex>
+        </v-layout>
+      </v-container>
+
+       <v-container grid-list-md fill-height>
+        <v-layout row wrap align-center>
+          <v-flex xs3>
+            <v-card width="100" height="100" color="yellow"></v-card>
+          </v-flex>
+          <v-flex xs9>
+            <h5>NIGHT-MODE YELLOW: ##ffeb3b</h5> Night mode yellow should be used for buttons in the IDE, and should only applied for a dark mode background
           </v-flex>
         </v-layout>
       </v-container>
@@ -52,7 +63,7 @@
             <v-card width="100" height="100" color="red"></v-card>
           </v-flex>
           <v-flex xs9>
-            <h5>ERROR RED</h5>Any error messages should be associated with this color red
+            <h5>ERROR RED: #f44336 </h5>Any error messages should be associated with this color red
           </v-flex>
           <v-flex xs12 ma-5>
             <h2 style="margin-bottom: 40px;">Headers</h2>

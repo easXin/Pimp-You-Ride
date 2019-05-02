@@ -22,14 +22,12 @@
 <script>
 import {FONT_LIST, FONT_SETTINGS} from '../../settings.js'
 let $ = require('jquery')
-
 export default {
     name: "FontsMenu",
     data (){
         return{
              fonts: FONT_LIST,
              fontStyling: FONT_SETTINGS
-
         }
   
        
@@ -57,5 +55,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

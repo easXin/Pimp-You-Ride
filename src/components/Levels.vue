@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <br>
@@ -190,5 +189,4 @@ export default {
   height: 88.5px;
   width: 570px;
 }
-
 </style>

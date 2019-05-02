@@ -13,7 +13,7 @@
             <b-tabs color="purple" content-class="mt-3">
               <b-tab style="color: white;" title="IDE" active>
                 <div>
-                  <editor v-model="content" @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
+                  <editor id="editor" ref="myEditor" v-model="content" @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
                 </div>
                 <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/>
               </b-tab>
@@ -45,6 +45,11 @@ export default {
       backgrounds: BACKGROUNDS
     };
   },
+  mounted(){
+    document.getElementById('editor').style.fontSize='16px';
+    let editor = this.$refs.myEditor.editor;
+    editor.setValue("if(x==3)");
+  },
   methods: {
     adjustBackground() {
       $("#page").css("height", $("body").height());
@@ -62,7 +67,7 @@ export default {
       require("brace/snippets/javascript"); //snippet
     },
     changeFonts(font) {
-      let ide = document.getElementById("ide");
+      let ide = document.getElementById("editor");
       ide.style.fontFamily = this.fontStylings[font];
       console.log(this.fontStylings["dokdo"]);
     },

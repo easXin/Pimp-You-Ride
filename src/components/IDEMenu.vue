@@ -14,7 +14,7 @@
       <v-list>
         <v-list-tile
           v-for="(item, index) in items"
-          :key="index"
+          :key="index"git 
           @click="setComponent(item)"
         >
           <v-list-tile-title id = "menuTitle">{{ item.title }}</v-list-tile-title>
@@ -24,7 +24,7 @@
   </div>
     <Backgrounds v-show="items.background.show" @changeBackground="changeBackground" />
     <FontsMenu  v-show="items.fonts.show" @changeFonts="changeFonts" />
-    </div>
+  </div>
 
 </template>
 
@@ -58,7 +58,7 @@
             title: "fonts",
             component: FontsMenu,
             show: false
-          }
+          },
         }
       }
     },
@@ -74,13 +74,13 @@
       },
       changeBackground(background){
         this.$emit("changeBackground", background);
-      }
+      },
     }
   
   }
 </script>
 
-<style scoped>
+<style >
   .ideMenu {
     border: solid red 1px;
     background:white;

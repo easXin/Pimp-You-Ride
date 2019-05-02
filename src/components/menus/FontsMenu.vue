@@ -37,8 +37,8 @@ export default {
         changeFonts(selectedFont) {
             let selectedFontCheckmark = document.getElementById(selectedFont+'icon');
             for(var font of this.fonts){
-                let fontCheckmark = $('#'+font+'icon')
-                 console.log(font+'icon')
+                let fontCheckmark = $('#'+font+'icon');
+
                 if(fontCheckmark.is(selectedFontCheckmark)){
                     fontCheckmark.addClass('d-inline')
                 }

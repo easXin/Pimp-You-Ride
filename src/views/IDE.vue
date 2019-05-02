@@ -5,21 +5,24 @@
         <b-container>
              
             <b-row>
-                <b-col><IDEMenu @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
-                 <b-col >         
-                    <h3 v-if="title"> {{title}} </h3>
-                    <h3 v-else> Welcome to your IDE</h3>
-                    
+                <b-col><IDEMenu ref='ideMenu' @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
+                 <b-col id="levelDescription">         
+                    <h3 class="title" v-if="title"> {{title}} </h3>
+                    <h3 class="title" v-else> Welcome to your IDE</h3>
+
+
+
+
                     <div>
-                    <b-tabs content-class="mt-3">
-                        <b-tab title="IDE" active>
+                    <b-tabs color="purple"  content-class="mt-3">
+                        <b-tab style="color: white;"  title="IDE" active>
                             <div>
                              <div id="ide" contenteditable="true"></div>
                             </div>
-                            <SubmitCode v-bind:unlockable="unlockable"/> 
+                            <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/> 
+        
                         </b-tab>
-                        <b-tab title="Level Description">  {{description}}</b-tab>
-                        <b-tab title="..." disabled><p>reserved room for furture tabs</p></b-tab>
+                        <b-tab title="Level Description" @click="adjustBackground()" >  {{description}}</b-tab>
                     </b-tabs>
                     </div>        
                      </b-col>
@@ -34,6 +37,7 @@ import IDEMenu from '../components/IDEMenu.vue'
 import SubmitCode from '../components/dialogs/submitCode.vue'
 import {FONT_SETTINGS} from '../settings.js'
 import {BACKGROUNDS} from '../settings.js'
+let $ = require('jquery')
 export default {
     name: "IDE",
     components: {
@@ -56,25 +60,19 @@ export default {
         },
         changeBackground(background){
             let page = document.getElementById("page")
-            page.style.background = "url("+this.backgrounds[background].path + ")";
-            console.log(this.backgrounds[background].dark);
-            if(this.backgrounds[background].dark){
-                let title = document.getElementById("title")
-                title.style.color = "white";
+            page.style.background = "url("+background.path + ")";
+            $('#page').css("background","url("+background.path + ") !important" );
+            if(background.dark){
+                 $(".title").css("color", "white");
                 let menuTitle = document.getElementById("menuTitle")
                 menuTitle.style.color = "black"
-                console.log("Change to white")
+                this.$refs.submitCode.toggleDarkMode(true);
             }
             else{
-                page.color = "black"
-                console.log("has to execute");
+               $(".title").css("color" , "black");
+               this.$refs.submitCode.toggleDarkMode(false);
             }
-            let ide = document.getElementById("ide")
-            ide.style.background =  "white"
-            if(this.backgrounds[background].dark){
-                page.style.color = "white";
-                ide.style.color = "black";
-            }
+           
         },
         submit(){
             let randomNumber = Math.random();

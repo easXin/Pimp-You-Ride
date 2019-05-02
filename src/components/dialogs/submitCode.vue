@@ -1,12 +1,25 @@
 <template>
   <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on }">
+
             <v-btn
+              v-if="unlockable"
+              
               color="success"
               dark
+              id="submit"
               v-on="on"
             >
               Submit
+            </v-btn>
+            <v-btn
+              v-else
+              color="success"
+              dark
+              v-on="on"
+              id="submit"
+            >
+              Run
             </v-btn>
 </template>
 
@@ -30,9 +43,16 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog = false"
+            @click="backToLevels()"
           >
-            I accept
+            Back to Levels
+          </v-btn>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog= false;"
+          >
+            Return to IDE
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -41,6 +61,7 @@
 </template>
 
 <script>
+  let $ = require('jquery')
   export default {
     name: "SubmitCode",
     props: ["unlockable","locked"],
@@ -57,16 +78,35 @@
         return localStorage.getItem("userId");
       }
     },
+    methods: {
+      backToLevels(){
+        this.$router.push({name: "home", params: {id: localStorage.getItem("userId")}})
+      },
+      toggleDarkMode(mode){
+         let submitButton = document.getElementById("submit");
+        if(mode){
+        submitButton.setAttribute("style", "background-color: yellow !important;")
+        submitButton.style.color = "black";
+        
+        }
+        else{
+        submitButton.setAttribute("style", "background-color: #4caf50 !important;")
+        submitButton.style.color = "white";
+        
+        }
+        
+      }
+    },
     watch: {
       dialog: function() {
         if (this.dialog) {
           let randomNumber = Math.random();
           if (randomNumber > .5) {
             this.title = "Good Job!"
+            if(this.unlockable){
             this.text = "You unlocked " + this.unlockable + "!!"
             this.success = true
-            console.log(this.badge_name)
-            fetch("http://stark.cse.buffalo.edu/cse410/badgecontroller.php", {
+            fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/badgecontroller.php", {
               // we are making a POST request
               method: 'POST',
               // this is the body of the POST request
@@ -78,8 +118,7 @@
               return response.json()
   
             }).then((data) => {
-              console.log(data)
-              fetch("http://stark.cse.buffalo.edu/cse410/ubcontroller.php", {
+              fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php", {
               // we are making a POST request
               method: 'POST',
               // this is the body of the POST request
@@ -93,8 +132,14 @@
   
             }).then((data) => {
               console.log(data);
+              this.$emit("update")
             });
             })
+            }
+            else{
+              this.success = true
+              this.text = "Congratulations, your code compiles correctly!";
+            }
   
           } else {
             this.title = "Error",

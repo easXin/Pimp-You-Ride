@@ -8,7 +8,9 @@
             dark
             v-on="on"
           >
-            Dropdown
+            Menu <i class="material-icons">
+arrow_drop_down
+</i>
           </v-btn>
 </template>
       <v-list>

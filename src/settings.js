@@ -2,6 +2,7 @@ let DOKDO = "dokdo"
 let ROBOTO = "roboto"
 let PATUA_ONE = "patua_one"
 
+let DEFAULT = "default";
 let SPACE = "space"
 let CLOUDS = "clouds"
 let DEATHSTAR = "deathstar"
@@ -27,6 +28,10 @@ export const FONT_SETTINGS = {
 }
 
 export const BACKGROUNDS = {
+    [DEFAULT]: {
+      title: 'Default',
+      dark: false
+    },
     [SPACE]: {
     title: 'Space',
     dark: true,

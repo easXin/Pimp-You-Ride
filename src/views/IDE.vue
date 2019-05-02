@@ -7,16 +7,16 @@
             <b-row>
                 <b-col><IDEMenu ref='ideMenu' @changeFonts="changeFonts" @changeBackground="changeBackground"/></b-col>
                  <b-col id="levelDescription">         
-                    <h3 id="title" v-if="title"> {{title}} </h3>
-                    <h3 id="title" v-else> Welcome to your IDE</h3>
+                    <h3 class="title" v-if="title"> {{title}} </h3>
+                    <h3 class="title" v-else> Welcome to your IDE</h3>
                     
                     <div>
-                    <b-tabs content-class="mt-3">
-                        <b-tab title="IDE" active>
+                    <b-tabs color="purple"  content-class="mt-3">
+                        <b-tab style="color: white;"  title="IDE" active>
                             <div>
                              <div id="ide" contenteditable="true"></div>
                             </div>
-                            <SubmitCode @update="update" v-bind:unlockable="unlockable"/> 
+                            <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/> 
                         </b-tab>
                         <b-tab title="Level Description" @click="adjustBackground()" >  {{description}}</b-tab>
                     </b-tabs>
@@ -38,9 +38,6 @@ export default {
     name: "IDE",
     components: {
         IDEMenu, SubmitCode
-    },
-    mounted(){
-        this.setLevelDescriptionHeight();
     },
     props: ["title","description", "unlockable"],
     data(){
@@ -67,13 +64,14 @@ export default {
             page.style.background = "url("+background.path + ")";
             $('#page').css("background","url("+background.path + ") !important" );
             if(background.dark){
-                let title = document.getElementById("title")
-                title.style.color = "white";
+                 $(".title").css("color", "white");
                 let menuTitle = document.getElementById("menuTitle")
                 menuTitle.style.color = "black"
+                this.$refs.submitCode.toggleDarkMode(true);
             }
             else{
-                title.style.color = "black"
+               $(".title").css("color" , "black");
+               this.$refs.submitCode.toggleDarkMode(false);
             }
            
         },

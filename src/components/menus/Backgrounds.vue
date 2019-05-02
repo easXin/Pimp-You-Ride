@@ -1,7 +1,7 @@
 <template>
 <div>
     <h1> Backgrounds </h1>
-    <v-list>
+    <v-list :two-line="true">
         <v-list-tile
         v-for="(background, index) in backgrounds"
         :key ="index"
@@ -57,6 +57,7 @@ export default {
         getBackgrounds: function(){
 
             let backgrounds = []
+            backgrounds.push(this.allBackgrounds["default"]);
             fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{
                 method: 'POST', 
                 body: JSON.stringify({
@@ -92,6 +93,7 @@ export default {
                             }
                           
                         }
+                        
                     })
                     this.backgrounds = backgrounds;
                     

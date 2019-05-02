@@ -4,8 +4,10 @@
 
             <v-btn
               v-if="unlockable"
+              
               color="success"
               dark
+              id="submit"
               v-on="on"
             >
               Submit
@@ -15,6 +17,7 @@
               color="success"
               dark
               v-on="on"
+              id="submit"
             >
               Run
             </v-btn>
@@ -58,6 +61,7 @@
 </template>
 
 <script>
+  let $ = require('jquery')
   export default {
     name: "SubmitCode",
     props: ["unlockable","locked"],
@@ -77,6 +81,20 @@
     methods: {
       backToLevels(){
         this.$router.push({name: "home", params: {id: localStorage.getItem("userId")}})
+      },
+      toggleDarkMode(mode){
+         let submitButton = document.getElementById("submit");
+        if(mode){
+        submitButton.setAttribute("style", "background-color: yellow !important;")
+        submitButton.style.color = "black";
+        
+        }
+        else{
+        submitButton.setAttribute("style", "background-color: #4caf50 !important;")
+        submitButton.style.color = "white";
+        
+        }
+        
       }
     },
     watch: {
@@ -100,7 +118,6 @@
               return response.json()
   
             }).then((data) => {
-              console.log(data)
               fetch("http://stark.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php", {
               // we are making a POST request
               method: 'POST',

@@ -13,7 +13,7 @@
             <b-tabs color="purple" content-class="mt-3">
               <b-tab style="color: white;" title="IDE" active>
                 <div>
-                  <editor id="editor" ref="myEditor" v-model="content" @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
+                  <editor draggable="true" id="editor" ref="myEditor"  @init="editorInit" lang="java" theme="chrome" width="500" height="400"></editor>
                 </div>
                 <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/>
               </b-tab>
@@ -25,6 +25,7 @@
     </b-container>
   </div>
 </template>
+
 <script>
 import IDEMenu from "../components/IDEMenu.vue";
 import SubmitCode from "../components/dialogs/submitCode.vue";
@@ -85,14 +86,6 @@ export default {
         this.$refs.submitCode.toggleDarkMode(false);
       }
     },
-    submit() {
-      let randomNumber = Math.random();
-      if (randomNumber < 0.5) {
-        console.log("correct");
-      } else {
-        console.log("wrong");
-      }
-    }
   }
 };
 </script>
@@ -105,7 +98,6 @@ export default {
   padding: 5px;
   background: white;
 }
-
 #entireIDEPage {
   background-image: url("../assets/clouds.jpg");
 }
@@ -114,5 +106,3 @@ h3 {
   color: black;
 }
 </style>
-
-

@@ -146,9 +146,7 @@
             this.success = false,
             this.text = "Your code was incorrect. Please try again.",
             this.locked = false
-
             this.locked = true
-
           }
         }
   

@@ -26,6 +26,7 @@
   </div>
     <Backgrounds ref="background" v-show="items.background.show" @changeBackground="changeBackground" />
     <FontsMenu  v-show="items.fonts.show" @changeFonts="changeFonts" />
+    <DragAndDrop v-show="items.draganddrop.show" />
     </div>
 
 </template>
@@ -33,13 +34,15 @@
 <script>
   import Backgrounds from './menus/Backgrounds';
   import FontsMenu from './menus/FontsMenu';
+  import DragAndDrop from './menus/DragAndDrop';
   
   
   export default {
     name: "IDEMenu",
     components: {
       Backgrounds,
-      FontsMenu
+      FontsMenu,
+      DragAndDrop
     },
     data() {
       return {
@@ -48,8 +51,8 @@
             title: "Themes",
             show: false
           },
-          stickers: {
-            title: "Stickers",
+          draganddrop: {
+            title: "Drag and Drop Code",
             show: false
           },
           background: {

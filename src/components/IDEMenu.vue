@@ -3,15 +3,15 @@
     <div class="text-xs-center">
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn
-            color="primary"
-            dark
-            v-on="on"
-          >
-            Menu <i class="material-icons">
-arrow_drop_down
-</i>
-          </v-btn>
+            <v-btn
+              color="primary"
+              dark
+              v-on="on"
+            >
+              Menu <i class="material-icons">
+  arrow_drop_down
+  </i>
+            </v-btn>
 </template>
       <v-list>
         <v-list-tile
@@ -74,10 +74,10 @@ arrow_drop_down
       changeFonts(font) {
         this.$emit("changeFonts", font);
       },
-      changeBackground(background){
+      changeBackground(background) {
         this.$emit("changeBackground", background);
       },
-      update(){
+      update() {
         this.$refs.background.getBackgrounds();
       }
     }
@@ -87,7 +87,6 @@ arrow_drop_down
 
 <style scoped>
   .ideMenu {
-
-    background:white;
+    background: white;
   }
 </style>

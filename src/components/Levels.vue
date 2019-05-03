@@ -57,48 +57,86 @@ export default {
       levels: [
         {
           number: 1,
-          title: "Course Introduction",
-          description: "🐱meow1",
+          title: "Hello World!",
+          description: "This assignments is an introduction to a useful tool throughout programming. Printing out to the console.\nObjective: Print your first name and last name seperated by a line",
           unlockable: "Clouds",
+          startcode: "System.out.print()",
           unlocked: true
       
         },
         {
           number: 2,
-          title: "If Statements",
-          description: "🐱meow1",
-          unlockable: "space",
-          unlocked: false,
+          title: "If or else",
+          description: "This assignment introduces you to a control statement. A control statement is a code snippet which dictates the flow of a program depending on a condition.\nObjective: Print out either your first name or last name depending if x is larger than 5.",
+          unlockable: "If Statements",
+          startcode:"if(){}",
+          unlocked: false
         },
         {
           number: 3,
-          title: "For Loops",
-          description: "🐱meow1",
-          unlockable: "While Loops",
+          title: "Loops and more loops",
+          description: "This assignment introduces you to different kind of loops. loops are based on conditions which dictate if a loop will continue to loop if the condition is true.\nObjective: Use a while, for, and do while loop to iterate through an array and sum up the elements.",
+          startcode:"int[] numbers = {26,67,89};",
+          unlockable: "twilight",
           unlocked: false
         },
         {
           number: 4,
           title: "Boolean Logic",
-          description: "🐱meow1",
+          description: "Booleans are a basic but very useful tool in computer science. They can be used as flags, inside if statements, while loops, etc.\nObjective: write a loop that checks students score based on true or false answers.",
+          startcode:"boolean[] answers = {true, false, false, false, true};",
           unlockable: "dokdo",
           unlocked: false
         },
         {
           number: 5,
           title: "Assigning Variables",
-          description: "🐱meow1",
-          unlockable: "deathstar",
+          description: "Variable assignments are essential in coding. A lot of times you need to store values but where? that's where variables come in!\nObjective: I honestly dont know! woops Easter egg",
+          startcode:"System.out.println(ayeeeee)",
+          unlockable: "While Loop",
           unlocked: false
         },
         {
           number: 6,
           title: "Intro to Arrays",
-          description: "🐱meow1",
+          description: "As you probably seen before, arrays are very useful! They basically store many values into a single variable. The catch is that the arrays must be of the same type.\nObjective: Create 5 different types of arrays and loop through each array and print out each element of the same index",
+          startcode:"//int[5] numbers = {1,2,3,4,5};",
           unlockable: "merbivore",
           unlocked: false,
           startingCode: "int [] array = [3, 5, 6]"
         },
+        {
+          number: 7,
+          title: " Functions that function",
+          description: "Functions are called when you want a specific job done! Instead of writing the code over and over you can use functions!\nObjective: Create a function that prints out every element inside an array.",
+          startcode:"void printall(int[] array){}",
+          unlockable:"Space",
+          unlocked: false
+        },
+        {
+          number: 8,
+          title:"Feed the function parameters",
+          description:"Some functions take parameters and others dont! it's honestly up to you if you want to feed a function. A parameter is a variable that you can pass into a function and do work.\nObjective: Create a function name power that takes two parameters where the 1st is the base and the 2nd is the power.",
+          startcode:"int base = 2;\nint power = 5;",
+          unlockable:"kuroir",
+          unlocked:false
+        },
+        {
+          number: 9,
+          title:"Recursion",
+          description:"Some funtions can call themselves! But how can a function end if it keeps calling itself?\nObjective: Recreate the base and power funtion but make but recursive,",
+          startcode:"int base = 2;\nint power = 5;",
+          unlockable:"padua one",
+          unlocked: false
+        },
+        {
+          number: 10,
+          title: "Classes",
+          description: "A big part of object oriented programming in the use of classes! classes are a good way to create objects that will have similar characteristics and functions.\nObjective: create a class called humans that has a name, last name and age. Give it a function that displays its name. ",
+          startcode:"Class Humans{}",
+          unlockable:"deathstar",
+          unlocked: false
+        }
         
       ],
       startLevelVisible: false,

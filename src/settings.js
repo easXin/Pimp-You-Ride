@@ -1,6 +1,6 @@
 let DOKDO = "dokdo"
 let ROBOTO = "roboto"
-let PATUA_ONE = "patua_one"
+let PATUA_ONE = "patua one"
 
 let DEFAULT = "default";
 let SPACE = "space"

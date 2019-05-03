@@ -1,7 +1,7 @@
 let DOKDO = "dokdo"
 let ROBOTO = "roboto"
-let PATUA_ONE = "patua one"
-let DEFAULT_FONT = "Default Font"
+let PATUA_ONE = "padua_one"
+let DEFAULT_FONT = "Default_Font"
 
 let DEFAULT = "default";
 let SPACE = "space"

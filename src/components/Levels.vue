@@ -94,7 +94,7 @@ export default {
           title: "Assigning Variables",
           description: "Variable assignments are essential in coding. A lot of times you need to store values but where? that's where variables come in!\nObjective: I honestly dont know! woops Easter egg",
           startcode:"System.out.println(ayeeeee)",
-          unlockable: "While Loop",
+          unlockable: "While Loops",
           unlocked: false
         },
         {
@@ -127,14 +127,14 @@ export default {
           title:"Recursion",
           description:"Some funtions can call themselves! But how can a function end if it keeps calling itself?\nObjective: Recreate the base and power funtion but make but recursive,",
           startcode:"int base = 2;\nint power = 5;",
-          unlockable:"padua one",
+          unlockable:"padua_one",
           unlocked: false
         },
         {
           number: 10,
           title: "Classes",
           description: "A big part of object oriented programming in the use of classes! classes are a good way to create objects that will have similar characteristics and functions.\nObjective: create a class called humans that has a name, last name and age. Give it a function that displays its name. ",
-          startcode:"Class Humans{}",
+          startcode:"class Humans{}",
           unlockable:"deathstar",
           unlocked: false
         }

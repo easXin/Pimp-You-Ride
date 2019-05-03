@@ -1,6 +1,7 @@
 let DOKDO = "dokdo"
 let ROBOTO = "roboto"
 let PATUA_ONE = "patua_one"
+let DEFAULT_FONT = "Default Font"
 
 let DEFAULT = "default";
 let SPACE = "space"
@@ -24,7 +25,8 @@ export const FONT_LIST = [DOKDO, ROBOTO, PATUA_ONE];
 export const FONT_SETTINGS = {
     [DOKDO]: "'Dokdo', cursive",
     [ROBOTO]: "'Roboto Condensed', sans-serif",
-    [PATUA_ONE]: "'Patua One', cursive"
+    [PATUA_ONE]: "'Patua One', cursive",
+    [DEFAULT_FONT]: "'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace"
 }
 
 export const BACKGROUNDS = {

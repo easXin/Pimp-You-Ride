@@ -76,10 +76,9 @@ export default {
                     })
                     let systemBadges = badgeData.badges;
                     systemBadges.forEach((badge)=>{
-                        if(userBadges.includes(badge.badge_id)){
-                            console.log(badge.badge_name);
+                        if(userBadges.includes(badge.badge_id)){            
                             if(this.allThemes.includes(badge.badge_name)){
-                                 console.log("yo");
+     
                                  themes.push(badge.badge_name);
                             }
                           

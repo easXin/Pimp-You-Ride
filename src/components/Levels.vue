@@ -61,19 +61,20 @@ export default {
           description: "🐱meow1",
           unlockable: "Clouds",
           unlocked: true
+      
         },
         {
           number: 2,
           title: "If Statements",
           description: "🐱meow1",
           unlockable: "space",
-          unlocked: false
+          unlocked: false,
         },
         {
           number: 3,
           title: "For Loops",
           description: "🐱meow1",
-          unlockable: "kuroir",
+          unlockable: "While Loops",
           unlocked: false
         },
         {
@@ -95,7 +96,8 @@ export default {
           title: "Intro to Arrays",
           description: "🐱meow1",
           unlockable: "merbivore",
-          unlocked: false
+          unlocked: false,
+          startingCode: "int [] array = [3, 5, 6]"
         },
         
       ],

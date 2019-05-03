@@ -115,9 +115,11 @@ export default {
         let menuTitle = document.getElementById("menuTitle");
         menuTitle.style.color = "black";
         this.$refs.submitCode.toggleDarkMode(true);
+        this.$refs.ideMenu.toggleDarkMode(true);
       } else {
         $(".title").css("color", "black");
         this.$refs.submitCode.toggleDarkMode(false);
+        this.$refs.ideMenu.toggleDarkMode(false);
       }
     }
   }

@@ -104,9 +104,9 @@ export const BACKGROUNDS = {
 }
 }
 
-const WHILE = "while";
-const IF = "if";
-const FOR = "for";
+const WHILE = "While Loops";
+const IF = "If Statements";
+const FOR = "For Loops";
 
 export const DRAG_COMPONENTS = {
     [WHILE] :{

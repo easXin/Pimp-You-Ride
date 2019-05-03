@@ -25,8 +25,8 @@
     </v-menu>
   </div>
     <Backgrounds ref="background" v-show="items.background.show" @changeBackground="changeBackground" />
-    <FontsMenu  v-show="items.fonts.show" @changeFonts="changeFonts" />
-    <DragAndDrop v-show="items.draganddrop.show" />
+    <FontsMenu  ref="fonts" v-show="items.fonts.show" @changeFonts="changeFonts" />
+    <DragAndDrop ref="drag" v-show="items.draganddrop.show" />
     <Themes ref="themes" v-show="items.themes.show" @changeTheme="changeTheme"/>
     </div>
 
@@ -89,6 +89,8 @@
       update() {
         this.$refs.background.getBackgrounds();
         this.$refs.themes.getThemes()
+        this.$refs.fonts.getFonts()
+        this.$refs.drag.getDragAndDrops()
       }
     }
   

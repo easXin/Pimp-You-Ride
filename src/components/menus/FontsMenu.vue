@@ -26,14 +26,65 @@ export default {
     name: "FontsMenu",
     data (){
         return{
-             fonts: FONT_LIST,
-             fontStyling: FONT_SETTINGS
+             fonts: [],
+             fontStyling: FONT_SETTINGS,
+             allFonts : FONT_LIST
         }
   
        
         
     },
+    mounted(){
+        this.getFonts();
+    },
     methods: {
+        getFonts(){
+             let  fonts = []
+            fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{
+                method: 'POST', 
+                body: JSON.stringify({
+                    action: 'getUserBadges',
+                    userid: this.userId
+                })
+            })
+            .then((response)=>{
+                return response.json();
+            })
+            .then((userBadgeData)=>{
+               
+                fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/badgecontroller.php", {
+                    method: 'POST',
+                    body: JSON.stringify( {
+                        action: 'getBadges',
+                    })
+                })
+                .then((response)=>{
+                    return response.json();
+                })
+                .then((badgeData)=>{
+                    let userBadges =[];
+                    let array = userBadgeData.user_badges;
+                    array.forEach((badge)=>{
+                        userBadges.push(badge.badge_id);
+                    })
+                    let systemBadges = badgeData.badges;
+                    systemBadges.forEach((badge)=>{
+                        if(userBadges.includes(badge.badge_id)){
+                            if(this.allFonts.includes(badge.badge_name)){
+                                 fonts.push(badge.badge_name);
+                            }
+                          
+                        }
+                        
+                    })
+                    this.fonts = fonts;
+                    
+                });
+
+            });
+
+
+        },
         changeFonts(selectedFont) {
             let selectedFontCheckmark = document.getElementById(selectedFont+'icon');
             for(var font of this.fonts){

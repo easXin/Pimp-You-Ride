@@ -1,15 +1,14 @@
 <template>
 <div>
-    <h1> Backgrounds </h1>
+    <h1> Themes </h1>
     <v-list :two-line="true">
         <v-list-tile
-        v-for="(background, index) in backgrounds"
+        v-for="(theme, index) in themes"
         :key ="index"
-        @click="changeBackground(background)"
+        @click="changeTheme(theme)"
         >
-        <img :src ="background.path" width="50" height="50">
-        {{background.title}}
-        <v-icon :id="background.title+'icon'" class='d-none check' color="green">checkmark</v-icon>
+       {{ theme}}
+       <v-icon :id="theme+'icon'" class='d-none check' color="green">checkmark</v-icon>
 
         </v-list-tile>
     </v-list>
@@ -17,46 +16,37 @@
     
 </template>
 <script>
-
-
-import {BACKGROUNDS} from '../../settings.js'
+import {THEMES} from '../../settings.js';
 export default {
-    name: "Backgrounds",
-    mounted(){
-       this.getBackgrounds();
-    },
-    computed: {
-        userId() {
-            return localStorage.getItem("userId");
-        }
-    },
+    name: "Themes",
     data(){
         return{
-            allBackgrounds: BACKGROUNDS,
-            backgrounds: []
+            allThemes: THEMES,
+            themes: []
         }
     },
+    mounted(){
+        this.getThemes();
+    },
     methods: {
-        changeBackground: function(selectedBackground){
-            this.$emit("changeBackground", selectedBackground);
-            let selectedCheckedItem = document.getElementById(selectedBackground.title + 'icon');
-            console.log(this.allBackgrounds);
-            for(var background of this.backgrounds){
-                let backgroundCheck = document.getElementById(background.title+'icon');
-                if(backgroundCheck===selectedCheckedItem){
-                    backgroundCheck.className+=" d-inline"
-                    backgroundCheck.classList.remove('d-none');
+        changeTheme(theme){
+             this.$emit("changeTheme", theme);
+            let selectedCheckedItem = document.getElementById(theme+ 'icon');
+            for(var theme of this.themes){
+                let themeCheck = document.getElementById(theme+'icon');
+                if(themeCheck===selectedCheckedItem){
+                    themeCheck.className+=" d-inline"
+                    themeCheck.classList.remove('d-none');
                 }
                 else{
-                    backgroundCheck.className+= ' d-none'
-                    backgroundCheck.classList.remove('d-inline');
+                    themeCheck.className+= ' d-none'
+                    themeCheck.classList.remove('d-inline');
                 }
             }
         },
-        getBackgrounds: function(){
+           getThemes: function(){
 
-            let backgrounds = []
-            backgrounds.push(this.allBackgrounds["default"]);
+            let themes = []
             fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{
                 method: 'POST', 
                 body: JSON.stringify({
@@ -87,14 +77,16 @@ export default {
                     let systemBadges = badgeData.badges;
                     systemBadges.forEach((badge)=>{
                         if(userBadges.includes(badge.badge_id)){
-                            if(this.allBackgrounds[badge.badge_name]){
-                                  backgrounds.push(this.allBackgrounds[badge.badge_name]);
+                            console.log(badge.badge_name);
+                            if(this.allThemes.includes(badge.badge_name)){
+                                 console.log("yo");
+                                 themes.push(badge.badge_name);
                             }
                           
                         }
                         
                     })
-                    this.backgrounds = backgrounds;
+                    this.themes = themes;
                     
                 });
 
@@ -102,14 +94,12 @@ export default {
 
         
         }
+        
     }
+   
     
 }
 </script>
-
 <style scoped>
-[id$=icon] {
-    
-}
 
 </style>

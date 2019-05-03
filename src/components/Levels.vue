@@ -2,33 +2,27 @@
   <div>
     <br>
     <div>
-      <h1 style="text-align: center;"> Course Content </h1>
+      <h1 style="text-align: center;">Course Content</h1>
       <v-list>
         <v-list-tile class="title" v-for="(level, index) in levels" :key="index">
           <div v-bind:id="'level'+index">
             <v-list-tile-title style="height=10px; width = 10px;">
-            
-                <div v-if="level.unlocked" style="color: #4caf50;">
-              
-                    <i class="material-icons">lock_open</i>
-                
-                  &nbsp  {{index+1}}:&nbsp &nbsp  {{ level.title }}
-                </div>
-                <div v-else>
-                <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                <div style="color: #f44336;" v-on="on">
-                  
-                    <i class="material-icons">lock</i>
-              
-                  | &nbsp {{index+1}}:&nbsp &nbsp  {{ level.title }}
-
-              
+              <div v-if="level.unlocked" style="color: #4caf50;">
+                <i class="material-icons">lock_open</i>
+                &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }}
               </div>
-              </template>
-              <span>You must pass the current level before playing this level</span>
+              <div v-else>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <div style="color: #f44336;" v-on="on">
+                      <i class="material-icons">lock</i>
+
+                      | &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }}
+                    </div>
+                  </template>
+                  <span>You must pass the current level before playing this level</span>
                 </v-tooltip>
-                </div>
+              </div>
             </v-list-tile-title>
           </div>
         </v-list-tile>
@@ -77,11 +71,33 @@ export default {
         },
         {
           number: 3,
+          title: "For Loops",
+          description: "🐱meow1",
+          unlockable: "kuroir",
+          unlocked: false
+        },
+        {
+          number: 4,
+          title: "Boolean Logic",
+          description: "🐱meow1",
+          unlockable: "dokdo",
+          unlocked: false
+        },
+        {
+          number: 5,
           title: "Assigning Variables",
           description: "🐱meow1",
           unlockable: "deathstar",
           unlocked: false
-        }
+        },
+        {
+          number: 6,
+          title: "Intro to Arrays",
+          description: "🐱meow1",
+          unlockable: "merbivore",
+          unlocked: false
+        },
+        
       ],
       startLevelVisible: false,
       title: "",

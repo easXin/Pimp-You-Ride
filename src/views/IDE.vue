@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <IDEMenu ref="ideMenu" @changeFonts="changeFonts" @changeBackground="changeBackground"/>
+          <IDEMenu ref="ideMenu" @changeTheme="changeTheme" @changeFonts="changeFonts" @changeBackground="changeBackground"/>
         </b-col>
         <b-col id="levelDescription">
           <h3 class="title" v-if="title">{{title}}</h3>
@@ -62,9 +62,7 @@ export default {
   },
   mounted() {
     document.getElementById("editor").style.fontSize = "16px";
-    let editor = this.$refs.myEditor.editor;
-    editor.setValue("if(x==3)");
-    editor.setTheme("ace/theme/twilight");
+    
   },
   methods: {
     adjustBackground() {
@@ -92,6 +90,9 @@ export default {
       require("brace/theme/chrome");
       require('brace/theme/twilight');
       require('brace/theme/dreamweaver');
+      require('brace/theme/monokai');
+      require('brace/theme/kuroir');
+      require('brace/theme/merbivore');
       
       require("brace/snippets/javascript"); //snippet
     },
@@ -100,6 +101,10 @@ export default {
       ide.style.fontFamily = this.fontStylings[font];
       console.log(this.fontStylings["dokdo"]);
       
+    },
+    changeTheme(theme){
+      let editor = this.$refs.myEditor.editor;
+      editor.setTheme("ace/theme/"+ theme);
     },
     changeBackground(background) {
       let page = document.getElementById("page");

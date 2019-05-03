@@ -40,6 +40,11 @@
                 allDragComponents: DRAG_COMPONENTS
             }
         },
+        computed: {
+            userId(){
+                return localStorage.getItem("userId");
+            }
+        },
            mounted() {
             this.getDragAndDrops()
         },

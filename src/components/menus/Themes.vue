@@ -28,6 +28,11 @@ export default {
     mounted(){
         this.getThemes();
     },
+    computed: {
+        userId(){
+            return localStorage.getItem("userId")
+        }
+    },
     methods: {
         changeTheme(theme){
              this.$emit("changeTheme", theme);

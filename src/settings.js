@@ -50,7 +50,7 @@ export const BACKGROUNDS = {
 [SPIDERMAN]:{
     title:'Spiderman',
     dark:true,
-    path:'http://hdqwalls.com/download/spiderman-abstract-u3-1280x720.jpg'
+    path:'https://initiate.alphacoders.com/images/972/cropped-1920-1000-972973.jpg?9303'
 },
 [SPIDERVERSE]:{
     title:'Spiderverse',

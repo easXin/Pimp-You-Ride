@@ -34,6 +34,7 @@
           v-bind:title="title"
           v-bind:description="description"
           v-bind:unlockable="unlockable"
+          v-bind:startcode="startcode"
         />
       </v-list>
     </div>
@@ -143,7 +144,8 @@ export default {
       startLevelVisible: false,
       title: "",
       description: "",
-      unlockable: ""
+      unlockable: "",
+      startcode: ""
     };
   },
   computed: {
@@ -153,12 +155,12 @@ export default {
   },
   mounted() {
     let firstTile = document.getElementById("level0");
-    console.log("geronimo")
     firstTile.onclick = () => {
       this.startLevel(
         this.levels[0].title,
         this.levels[0].description,
-        this.levels[0].unlockable
+        this.levels[0].unlockable,
+        this.levels[0].startcode
       );
     };
     firstTile.style.cursor = "pointer";
@@ -169,11 +171,12 @@ export default {
     });
   },
   methods: {
-    startLevel: function(title, description, unlockable) {
+    startLevel: function(title, description, unlockable, startcode) {
       this.startLevelVisible = true;
       this.title = title;
       this.description = description;
       this.unlockable = unlockable;
+      this.startcode = startcode;
     },
     stopLevel: function() {
       this.startLevelVisible = false;
@@ -218,7 +221,8 @@ export default {
                   this.startLevel(
                     this.levels[index].title,
                     this.levels[index].description,
-                    this.levels[index].unlockable
+                    this.levels[index].unlockable,
+                    this.levels[index].startcode
                   );
                 };
                 levelTile.style.cursor = "pointer";

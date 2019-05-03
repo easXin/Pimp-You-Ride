@@ -32,6 +32,7 @@ export const FONT_SETTINGS = {
 export const BACKGROUNDS = {
     [DEFAULT]: {
       title: 'Default',
+      path: 'https://www.publicdomainpictures.net/pictures/30000/nahled/plain-white-background.jpg',
       dark: false
     },
     [SPACE]: {

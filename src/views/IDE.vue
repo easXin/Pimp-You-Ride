@@ -29,7 +29,7 @@
                 </div>
                 <SubmitCode ref="submitCode" @update="update" v-bind:unlockable="unlockable"/>
               </b-tab>
-              <b-tab title="Level Description" @click="adjustBackground()">{{description}}</b-tab>
+              <b-tab title="Level Description" @click="adjustBackground()"><div class="description">{{description}}</div></b-tab>
             </b-tabs>
           </div>
         </b-col>
@@ -53,7 +53,7 @@ export default {
     SubmitCode,
     editor: require("vue2-ace-editor")
   },
-  props: ["title", "description", "unlockable"],
+  props: ["title", "description", "unlockable", "startcode"],
   data() {
     return {
       fontStylings: FONT_SETTINGS,
@@ -62,6 +62,10 @@ export default {
   },
   mounted() {
     document.getElementById("editor").style.fontSize = "16px";
+    if(this.startcode){
+      let editor = this.$refs.myEditor.editor;
+      editor.setValue(this.startcode);
+    }
     
   },
   methods: {
@@ -116,10 +120,14 @@ export default {
         menuTitle.style.color = "black";
         this.$refs.submitCode.toggleDarkMode(true);
         this.$refs.ideMenu.toggleDarkMode(true);
+        $(".description").css("color", "white");
+
       } else {
         $(".title").css("color", "black");
         this.$refs.submitCode.toggleDarkMode(false);
         this.$refs.ideMenu.toggleDarkMode(false);
+        $(".description").css("color", "black");
+
       }
     }
   }

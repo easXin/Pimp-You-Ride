@@ -7,7 +7,7 @@
         :key ="index"
         @click="changeBackground(background)"
         >
-        <img :src ="background.path" width="50" height="50">
+        <img :src ="background.path" :alt="'a picture of'+background.title " width="50" height="50">
         {{background.title}}
         <v-icon :id="background.title+'icon'" class='d-none check' color="green">checkmark</v-icon>
 

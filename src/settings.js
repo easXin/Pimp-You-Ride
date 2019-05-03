@@ -122,3 +122,9 @@ export const DRAG_COMPONENTS = {
         title: "for loop"
     }
 }
+
+const TWILIGHT = "twilight";
+const MERBIVORE = "merbivore";
+const KUROIR = "kuroir";
+
+export const THEMES = [TWILIGHT, MERBIVORE, KUROIR]

@@ -131,7 +131,6 @@
               return response.json()
   
             }).then((data) => {
-              console.log(data);
               this.$emit("update")
             });
             })

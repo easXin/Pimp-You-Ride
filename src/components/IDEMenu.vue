@@ -27,6 +27,7 @@
     <Backgrounds ref="background" v-show="items.background.show" @changeBackground="changeBackground" />
     <FontsMenu  v-show="items.fonts.show" @changeFonts="changeFonts" />
     <DragAndDrop v-show="items.draganddrop.show" />
+    <Themes ref="themes" v-show="items.themes.show" @changeTheme="changeTheme"/>
     </div>
 
 </template>
@@ -35,6 +36,7 @@
   import Backgrounds from './menus/Backgrounds';
   import FontsMenu from './menus/FontsMenu';
   import DragAndDrop from './menus/DragAndDrop';
+  import Themes from './menus/Themes';
   
   
   export default {
@@ -42,7 +44,8 @@
     components: {
       Backgrounds,
       FontsMenu,
-      DragAndDrop
+      DragAndDrop,
+      Themes
     },
     data() {
       return {
@@ -80,8 +83,12 @@
       changeBackground(background) {
         this.$emit("changeBackground", background);
       },
+      changeTheme(theme){
+        this.$emit("changeTheme", theme);
+      },
       update() {
         this.$refs.background.getBackgrounds();
+        this.$refs.themes.getThemes()
       }
     }
   

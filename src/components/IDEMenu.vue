@@ -7,6 +7,7 @@
               color="primary"
               dark
               v-on="on"
+              id="menuButton"
             >
               Menu <i class="material-icons">
   arrow_drop_down
@@ -37,6 +38,8 @@
   import FontsMenu from './menus/FontsMenu';
   import DragAndDrop from './menus/DragAndDrop';
   import Themes from './menus/Themes';
+
+  let $ = require('jquery');
   
   
   export default {
@@ -91,6 +94,17 @@
         this.$refs.themes.getThemes()
         this.$refs.fonts.getFonts()
         this.$refs.drag.getDragAndDrops()
+      },
+      toggleDarkMode(mode){
+        let menuButton = document.getElementById("menuButton");
+        if(mode){
+          menuButton.setAttribute("style", "background-color: yellow !important;")
+          menuButton.style.color = "black";
+        }
+        else{
+           menuButton.setAttribute("style", "background-color: #4caf50 !important;")
+           menuButton.style.color = "white";
+        }
       }
     }
   

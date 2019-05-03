@@ -132,6 +132,9 @@
   
             }).then((data) => {
               this.$emit("update")
+              
+            
+            
             });
             })
             }

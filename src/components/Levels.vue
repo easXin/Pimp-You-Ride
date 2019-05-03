@@ -7,17 +7,18 @@
         <v-list-tile class="title" v-for="(level, index) in levels" :key="index">
           <div v-bind:id="'level'+index">
             <v-list-tile-title style="height=10px; width = 10px;">
-              <div v-if="level.unlocked" style="color: #4caf50;">
+              <div v-if="level.unlocked" class="titleContent" style="color: #4caf50;">
                 <i class="material-icons">lock_open</i>
-                &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }}
+                &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }} 
+              
               </div>
               <div v-else>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
-                    <div style="color: #f44336;" v-on="on">
+                    <div style="color: #f44336;" class="titleContent" v-on="on">
                       <i class="material-icons">lock</i>
 
-                      | &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }}
+                       &nbsp {{index+1}}:&nbsp &nbsp {{ level.title }} 
                     </div>
                   </template>
                   <span>You must pass the current level before playing this level</span>
@@ -152,6 +153,7 @@ export default {
   },
   mounted() {
     let firstTile = document.getElementById("level0");
+    console.log("geronimo")
     firstTile.onclick = () => {
       this.startLevel(
         this.levels[0].title,
@@ -239,10 +241,16 @@ export default {
 }
 .title {
   background: #f2f3f5;
+  display: inline-block;
   text-align: center;
-  margin: 2% 25%;
-  padding: 15px 15px 0 15px;
-  height: 88.5px;
-  width: 570px;
+  width: 80%;
+  margin-bottom: 10px;
+  clear: left;
+
+
 }
+.v-list__tile__title{
+  height: 30px;
+}
+
 </style>

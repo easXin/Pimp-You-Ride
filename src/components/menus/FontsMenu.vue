@@ -37,6 +37,11 @@ export default {
     mounted(){
         this.getFonts();
     },
+    computed: {
+        userId(){
+            return localStorage.getItem("userId");
+        }
+    },
     methods: {
         getFonts(){
              let  fonts = []

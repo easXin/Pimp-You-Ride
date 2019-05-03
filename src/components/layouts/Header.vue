@@ -14,11 +14,11 @@
             <router-link to="/ide" class="navtext">IDE</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="/description" class="navtext">description</router-link>
+            <router-link to="/description" class="navtext">Description</router-link>
           </b-nav-item>
           
           <b-nav-item>
-            <router-link to="/styleguide" class="navtext">Styleguide</router-link>
+            <router-link to="/leaderboard" class="navtext">Leaderboard</router-link>
           </b-nav-item>
           <template style="float: right; display: inline;">
           <b-nav-item v-if="loggedIn" @click="logout">Log Out</b-nav-item>

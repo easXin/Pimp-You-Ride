@@ -37,9 +37,15 @@ export default {
     mounted(){
         this.getFonts();
     },
+    computed: {
+        userId(){
+            return localStorage.getItem("userId");
+        }
+    },
     methods: {
         getFonts(){
              let  fonts = []
+             fonts.push("Default Font")
             fetch("http://webdev.cse.buffalo.edu/cse410/oobexception/index-out-of-bounds/hci-gamify/ubcontroller.php" ,{
                 method: 'POST', 
                 body: JSON.stringify({

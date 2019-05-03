@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Levels from './components/Levels.vue'
 import IDE from './views/IDE.vue'
 import Login from './views/Login.vue'
+import Leaderboard from './views/Leaderboard.vue';
 
 import Signup from './views/Signup.vue'
 
@@ -24,6 +25,12 @@ export default new Router({
             name: 'ide',
             component: IDE,
             props: true
+        },
+        {
+            path: '/leaderboard',
+            name: 'leaderboard',
+            component: Leaderboard
+
         },
         {
             path: '/description',
